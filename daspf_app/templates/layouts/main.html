@@ -25,9 +25,11 @@
 <div class="container">
     {% include 'layouts/header.html' %}
 
-    {% block content %}
+    <main role="main">
+        {% block content %}
 
-    {% endblock content %}
+        {% endblock content %}
+    </main>
 
     {% include 'layouts/footer.html' %}
 </div>

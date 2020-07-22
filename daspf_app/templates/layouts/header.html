@@ -1,7 +1,9 @@
 {% load static %}
 <header>
     <div class="header-top" style="text-align: center">
-        <img src="{% static 'images/leova-header.jpg' %}" alt="" style="height: 5rem; width: 100%">
+        <a href="{% url 'index' %}">
+            <img src="{% static 'images/leova-header.jpg' %}" alt="" style="height: 10rem; width: 100%">
+        </a>
     </div>
 
     <div class="header-bottom">
