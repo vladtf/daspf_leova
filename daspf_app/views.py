@@ -10,7 +10,7 @@ def index(request):
 
     page = request.GET.get('page', 1)
 
-    paginator = Paginator(post_list, 5)
+    paginator = Paginator(post_list, 3)
     try:
         posts = paginator.page(page)
     except PageNotAnInteger:
@@ -25,3 +25,8 @@ def index(request):
 def contacts(request):
     context = {}
     return render(request, 'views/contacts.html', context=context)
+
+
+def events(request):
+    context = {}
+    return render(request, 'views/events.html', context=context)
