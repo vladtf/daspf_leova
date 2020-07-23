@@ -36,3 +36,11 @@ class Post(models.Model):
                 if self.created_at.year == time.year:
                     return str(time.month - self.created_at.month) + " luni"
         return self.created_at
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = '/images/placeholder.png'
+        return url

@@ -6,7 +6,7 @@ from daspf_app.models import Post
 
 def index(request):
     news = Post.objects.all().filter(visible=True).order_by('-created_at')
-    context = {'news': news}
+    context = {'posts': news}
     return render(request, 'views/index.html', context=context)
 
 
