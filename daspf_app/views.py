@@ -1,9 +1,12 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+from daspf_app.models import Post
+
 
 def index(request):
-    context = {}
+    news = Post.objects.all().filter(visible=True).order_by('-created_at')
+    context = {'news': news}
     return render(request, 'views/index.html', context=context)
 
 
