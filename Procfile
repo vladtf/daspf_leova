@@ -1,1 +1,1 @@
-web: gunicorn daspfleova.wsgi --log-file -
+web: gunicorn daspf_leova.wsgi --log-file -
