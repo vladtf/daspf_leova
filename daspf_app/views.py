@@ -3,6 +3,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
+from daspf_app.forms import PostForm
 from daspf_app.models import Post, Category
 
 
@@ -37,7 +38,18 @@ def post_create(request):
     if not request.user.is_authenticated:
         return redirect('index')
 
-    context = {}
+    form = PostForm(request.POST or None)
+
+    if form.is_valid():
+        post = form.save()
+        post.created_by = request.user
+        post.save()
+
+        return redirect('index')
+
+    context = {
+        'form': form
+    }
     return render(request, 'views/post_create.html', context=context)
 
 
