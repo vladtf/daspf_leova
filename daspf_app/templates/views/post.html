@@ -3,10 +3,10 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-md-4">
             <img class="w-100" src="{{ post.imageURL }}" alt="">
         </div>
-        <div class="col-lg-8">
+        <div class="col-md-8">
             <h2>{{ post.title }}</h2>
             <h6><small>de către <strong>{{ post.created_by }}</strong></small></h6>
             <h6>{{ post.created_at|date:"H:m  |  d M Y" }}</h6>
