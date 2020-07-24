@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -23,12 +24,32 @@ def events(request):
 
 
 def post(request, post_id):
-
     try:
         post = Post.objects.get(id=post_id)
 
         context = {'post': post}
         return render(request, 'views/post.html', context=context)
+    except Post.DoesNotExist:
+        return redirect('index')
+
+
+def post_create(request):
+    if not request.user.is_authenticated:
+        return redirect('index')
+
+    context = {}
+    return render(request, 'views/post_create.html', context=context)
+
+
+def post_edit(request, post_id):
+    if not request.user.is_authenticated:
+        return redirect('index')
+
+    try:
+        post = Post.objects.get(id=post_id)
+
+        context = {'post': post}
+        return render(request, 'views/post_edit.html', context=context)
     except Post.DoesNotExist:
         return redirect('index')
 
