@@ -47,10 +47,8 @@ def post_create(request):
 
         return redirect('index')
 
-    context = {
-        'form': form
-    }
-    return render(request, 'views/post_create.html', context=context)
+    context = {'form': form}
+    return render(request, 'views/post_edit.html', context=context)
 
 
 def post_edit(request, post_id):
@@ -59,9 +57,15 @@ def post_edit(request, post_id):
 
     try:
         post = Post.objects.get(id=post_id)
+        form = PostForm(request.POST or None, instance=post)
 
-        context = {'post': post}
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+
+        context = {'form': form}
         return render(request, 'views/post_edit.html', context=context)
+
     except Post.DoesNotExist:
         return redirect('index')
 
