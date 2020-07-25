@@ -14,7 +14,7 @@
                         </h3>
                         <div class="mb-1 text-muted">{{ post.get_date }}</div>
                         <div class="mb-1 text-muted">Postat de: {{ post.created_by }}</div>
-                        <p class="card-text mb-auto">{{ post.body }}</p>
+                        <p class="card-text mb-auto">{{ post.body | striptags | truncatechars:50 }}</p>
                         <a href="#">Citește mai departe</a>
                     </div>
                     <img class="card-img-right flex-auto d-none d-md-block"
