@@ -1,6 +1,4 @@
-from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from daspf_app.forms import PostForm

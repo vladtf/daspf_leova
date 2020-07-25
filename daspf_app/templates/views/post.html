@@ -11,7 +11,7 @@
             <h6><small>de către <strong>{{ post.created_by }}</strong></small></h6>
             <h6>{{ post.created_at|date:"H:m  |  d M Y" }}</h6>
             {% if user.is_authenticated %}
-                <a class="btn btn-success btn-link text-light" href="{% url 'post_edit' post_id=post.id %}">Edit
+                <a class="btn btn-success btn-outline-success" href="{% url 'post_edit' post_id=post.id %}">Edit
                     post</a>
             {% endif %}
         </div>
@@ -19,7 +19,7 @@
     <br>
     <div class="row">
         <div class="col-lg-12">
-            {{ post.body }}
+            {{ post.body | safe }}
         </div>
 
     </div>
