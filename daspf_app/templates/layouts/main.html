@@ -112,9 +112,12 @@
         $('body').bootstrapMaterialDesign();
     });
 
-    CKEDITOR.replace('id_body', {
-        extraPlugins : 'autogrow',
-    });
+    if (document.getElementById('id_body') !== null) {
+        CKEDITOR.replace('id_body', {
+            extraPlugins: ['autogrow', 'image2', 'indentlist']
+        });
+    }
+
 </script>
 
 </body>

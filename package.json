@@ -1,0 +1,23 @@
+{
+  "name": "daspf_leova",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "croppie": "^2.6.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vladtf/daspf_leova.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vladtf/daspf_leova/issues"
+  },
+  "homepage": "https://github.com/vladtf/daspf_leova#readme"
+}
