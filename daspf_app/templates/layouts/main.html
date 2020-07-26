@@ -29,66 +29,25 @@
 
 </head>
 <body>
-
-
-{# Content #}
 <div class="container">
+    <!-- Navbar -->
     {% include 'layouts/header.html' %}
 
-    <main role="main">
-        <div class="row py-2">
-            <div class="col-md-9">
-
-                {% block content %}
-                {% endblock content %}
-            </div>
-            <div class="col-md-3 border-left border-secondary">
-                <div class="row py-2">
-                    <div class="col-sm-12 py-3">
-                        <div class="card shadow-sm">
-                            <a href="#">
-                                <img class="card-img-top" src="{% static 'images/placeholder.jpg' %}" alt=""
-                                     style="display: block; height: 10rem; width: 100%">
-                            </a>
-                            <div class="card-body">
-                                <div class="card-text">
-                                    Some text
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 py-3">
-                        <div class="card shadow-sm">
-                            <a href="#">
-                                <img class="card-img-top" src="{% static 'images/placeholder.jpg' %}" alt=""
-                                     style="display: block; height: 10rem; width: 100%">
-                            </a>
-                            <div class="card-body">
-                                <div class="card-text">
-                                    Some text
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 py-3">
-                        <div class="card shadow-sm">
-                            <a href="#">
-                                <img class="card-img-top" src="{% static 'images/placeholder.jpg' %}" alt=""
-                                     style="display: block; height: 10rem; width: 100%">
-                            </a>
-                            <div class="card-body">
-                                <div class="card-text">
-                                    Some text
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="row py-2">
+        <!-- Content -->
+        <div class="col-md-9">
+            {% block content %}
+            {% endblock content %}
         </div>
-    </main>
-    {% include 'layouts/footer.html' %}
 
+        <!-- Sidebar -->
+        <div class="col-md-3 border-left border-secondary">
+            {% include 'layouts/sidebar.html' %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    {% include 'layouts/footer.html' %}
 </div>
 
 
@@ -105,25 +64,5 @@
 <script src="https://cdn.ckeditor.com/4.14.1/full-all/ckeditor.js"></script>
 <!-- Main.js -->
 <script src="{% static 'js/main.js' %}" type="text/javascript"></script>
-
-<script>
-    {#tinymce.init({selector: 'textarea'});#}
-
-    if (document.getElementById('id_body') !== null) {
-        CKEDITOR.replace('id_body', {
-            extraPlugins: ['autogrow', 'image2', 'indentlist']
-        });
-    }
-
-    $('.carousel').on('slide.bs.carousel', function (event) {
-        var height = $(event.relatedTarget).height();
-        var $innerCarousel = $(event.target).find('.carousel-inner');
-
-        $innerCarousel.animate({
-            height: height
-        });
-    });
-</script>
-
 </body>
 </html>
