@@ -28,7 +28,7 @@
     <br>
 
     <div class="row">
-        <div class="col-lg-12" style="margin-bottom: 3rem">
+        <div class="col-lg-12" style="margin-bottom: 3rem; ;">
             <!--Carousel Wrapper-->
             <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
                 <!--Slides-->
@@ -51,11 +51,12 @@
                     <span class="sr-only">Next</span>
                 </a>
                 <!--/.Controls-->
-                <ol class="carousel-indicators" >
+                <ol class="carousel-indicators">
                     {% for image in images %}
                         <li data-target="#carousel-thumb" data-slide-to="{{ forloop.counter0 }}"
                             class="{% if forloop.first %} active {% endif %}">
-                            <img src="{{ image.image.url }}" alt="NoImage" class="img-fluid d-block" style="margin-top: 3rem">
+                            <img src="{{ image.image.url }}" alt="NoImage" class="img-fluid d-block"
+                                 style="margin-top: 3rem">
                         </li>
                     {% endfor %}
                 </ol>
