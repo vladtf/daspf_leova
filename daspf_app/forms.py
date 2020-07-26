@@ -21,3 +21,4 @@ class PageDataForm(forms.Form):
     body = forms.CharField(required=True, label='Conținut postare', widget=forms.Textarea(attrs={
         "class": "my-2 w-100",
     }))
+    # photo = CroppieField()

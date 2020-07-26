@@ -16,11 +16,51 @@
             {% endif %}
         </div>
     </div>
+
     <br>
+
     <div class="row">
         <div class="col-lg-12">
             {{ post.body | safe }}
         </div>
 
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-lg-12" style="margin-bottom: 3rem">
+            <!--Carousel Wrapper-->
+            <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
+                <!--Slides-->
+                <div class="carousel-inner" role="listbox">
+                    {% for image in images %}
+                        <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                            <img class="d-block w-100" src="{{ image.image.url }}"
+                                 alt="NoImage">
+                        </div>
+                    {% endfor %}
+                </div>
+                <!--/.Slides-->
+                <!--Controls-->
+                <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+                <!--/.Controls-->
+                <ol class="carousel-indicators" >
+                    {% for image in images %}
+                        <li data-target="#carousel-thumb" data-slide-to="{{ forloop.counter0 }}"
+                            class="{% if forloop.first %} active {% endif %}">
+                            <img src="{{ image.image.url }}" alt="NoImage" class="img-fluid d-block" style="margin-top: 3rem">
+                        </li>
+                    {% endfor %}
+                </ol>
+            </div>
+            <!--/.Carousel Wrapper-->
+        </div>
     </div>
 {% endblock content %}

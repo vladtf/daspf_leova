@@ -3,7 +3,15 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <form action="." method="POST" class="my-2">
+        <form action="." method="POST" class="my-2" enctype="multipart/form-data">
+
+            {% block js %}
+                {{ form.media }}
+            {% endblock js %}
+            <div class="row">
+                <div id="cropper"></div>
+            </div>
+
             {% csrf_token %}
             {{ form }}
 
@@ -16,4 +24,6 @@
             {{ home.body | safe }}
         </div>
     </div>
+
+
 {% endblock content %}

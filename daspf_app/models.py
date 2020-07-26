@@ -44,3 +44,8 @@ class Post(models.Model):
         except:
             url = '/images/placeholder.png'
         return url
+
+
+class PostImage(models.Model):
+    post = models.ForeignKey(Post, default=None, on_delete=models.CASCADE)
+    image = models.ImageField(null=True, blank=True, default='placeholder.jpg')

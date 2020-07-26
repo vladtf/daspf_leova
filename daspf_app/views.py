@@ -1,8 +1,8 @@
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from daspf_app.forms import PostForm, PageDataForm
-from daspf_app.models import Post, Category
+from daspf_app.models import Post, Category, PostImage
 
 
 def index(request):
@@ -23,13 +23,16 @@ def events(request):
 
 
 def post(request, post_id):
-    try:
-        post = Post.objects.get(id=post_id)
+    # post = Post.objects.get(id=post_id)
+    post = get_object_or_404(Post, id=post_id)
+    images = PostImage.objects.filter(post=post)
 
-        context = {'post': post}
-        return render(request, 'views/post.html', context=context)
-    except Post.DoesNotExist:
-        return redirect('index')
+    context = {
+        'post': post,
+        'images': images
+    }
+
+    return render(request, 'views/post.html', context=context)
 
 
 def post_create(request):

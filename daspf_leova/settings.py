@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'daspf_app.apps.DaspfAppConfig'
+    'daspf_app.apps.DaspfAppConfig',
 ]
 
 MIDDLEWARE = [
@@ -147,5 +147,3 @@ if os.getcwd() == '/':
 
     # Static asset configuration
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
