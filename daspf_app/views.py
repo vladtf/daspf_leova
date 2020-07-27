@@ -10,7 +10,7 @@ def index(request):
 
     posts = paginate(request, post_list)
     context = {'posts': posts}
-    return render(request, 'views/index.html', context=context)
+    return render(request, 'views/post/post_index.html', context=context)
 
 
 def events(request):
@@ -32,7 +32,7 @@ def post(request, post_id):
         'images': images
     }
 
-    return render(request, 'views/post.html', context=context)
+    return render(request, 'views/post/post_show.html', context=context)
 
 
 def post_create(request):
@@ -47,7 +47,7 @@ def post_create(request):
         return redirect('index')
 
     context = {'form': form}
-    return render(request, 'views/post_edit.html', context=context)
+    return render(request, 'views/post/post_edit.html', context=context)
 
 
 def post_edit(request, post_id):
@@ -63,7 +63,7 @@ def post_edit(request, post_id):
             return redirect('index')
 
         context = {'form': form}
-        return render(request, 'views/post_edit.html', context=context)
+        return render(request, 'views/post/post_edit.html', context=context)
 
     except Post.DoesNotExist:
         return redirect('index')

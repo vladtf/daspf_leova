@@ -14,7 +14,6 @@
                             <a class="text-dark" href="#">{{ post.title }}</a>
                         </h3>
                         <div class="mb-1 text-muted">{{ post.get_date }}</div>
-                        <div class="mb-1 text-muted">Postat de: {{ post.created_by }}</div>
                         <p class="card-text mb-auto" id="post_body">{{ post.body| striptags | truncatechars:50 }}</p>
                         <a href="#">Citește mai departe</a>
                     </div>
