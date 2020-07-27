@@ -1,3 +1,31 @@
 body {
     margin: 0;
 }
+
+.frame-square {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+}
+
+.frame-square img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0.2rem;
+}
+
+@media (max-width: 767px){
+    .frame-square{
+        display: none;
+    }
+}
+

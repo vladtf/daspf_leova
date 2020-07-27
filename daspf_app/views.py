@@ -1,3 +1,5 @@
+from itertools import chain
+
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -5,33 +7,45 @@ from daspf_app.forms import PostForm, PageDataForm
 from daspf_app.models import Post, Category, PostImage
 
 
-def index(request):
+def home(request):
+    form = {}
+    home = Post.objects.get(category=Category.objects.get(name='Acasa'))
+
+    if request.user.is_authenticated:
+        form = PageDataForm(request.POST or None, request.FILES or None, initial={
+            'title': home.title,
+            'body': home.body,
+        })
+
+        if form.is_valid():
+            home.body = form.cleaned_data['body']
+            home.title = form.cleaned_data['title']
+            home.created_by = request.user
+
+            home.save()
+
+    context = {'form': form, 'home': home}
+    return render(request, 'views/home.html', context=context)
+
+
+def post_index(request):
     post_list = Post.objects.all().filter(visible=True).order_by('-created_at')
 
-    posts = paginate(request, post_list)
+    posts = paginate(request, post_list, post_per_page=2)
     context = {'posts': posts}
     return render(request, 'views/post/post_index.html', context=context)
 
 
-def events(request):
-    post_list = Post.objects.all().filter(category=Category.objects.get(name='Evenimente'), visible=True).order_by(
-        '-created_at')
-
-    posts = paginate(request, post_list)
-    context = {'posts': posts}
-    return render(request, 'views/events.html', context=context)
-
-
-def post(request, post_id):
+def post_show(request, post_id):
     # post = Post.objects.get(id=post_id)
     post = get_object_or_404(Post, id=post_id)
+
     images = PostImage.objects.filter(post=post)
 
     context = {
         'post': post,
         'images': images
     }
-
     return render(request, 'views/post/post_show.html', context=context)
 
 
@@ -69,25 +83,13 @@ def post_edit(request, post_id):
         return redirect('index')
 
 
-def home(request):
-    form = {}
-    home = Post.objects.get(category=Category.objects.get(name='Acasa'))
+def events(request):
+    post_list = Post.objects.all().filter(category=Category.objects.get(name='Evenimente'), visible=True).order_by(
+        '-created_at')
 
-    if request.user.is_authenticated:
-        form = PageDataForm(request.POST or None, request.FILES or None, initial={
-            'title': home.title,
-            'body': home.body,
-        })
-
-        if form.is_valid():
-            home.body = form.cleaned_data['body']
-            home.title = form.cleaned_data['title']
-            home.created_by = request.user
-
-            home.save()
-
-    context = {'form': form, 'home': home}
-    return render(request, 'views/home.html', context=context)
+    posts = paginate(request, post_list)
+    context = {'posts': posts}
+    return render(request, 'views/events.html', context=context)
 
 
 def contacts(request):
@@ -95,9 +97,9 @@ def contacts(request):
     return render(request, 'views/contacts.html', context=context)
 
 
-def paginate(request, post_list):
+def paginate(request, post_list, post_per_page=3):
     page = request.GET.get('page', 1)
-    paginator = Paginator(post_list, 3)
+    paginator = Paginator(post_list, post_per_page)
     try:
         posts = paginator.page(page)
     except PageNotAnInteger:
