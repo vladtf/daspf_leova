@@ -39,13 +39,11 @@ def post_create(request):
     if not request.user.is_authenticated:
         return redirect('index')
 
-    form = PostForm(request.POST or None)
+    post = Post(created_by=request.user)
+    form = PostForm(request.POST or None, request.FILES or None, instance=post)
 
     if form.is_valid():
-        post = form.save()
-        post.created_by = request.user
-        post.save()
-
+        form.save()
         return redirect('index')
 
     context = {'form': form}
@@ -58,7 +56,7 @@ def post_edit(request, post_id):
 
     try:
         post = Post.objects.get(id=post_id)
-        form = PostForm(request.POST or None, instance=post)
+        form = PostForm(request.POST or None, request.FILES or None, instance=post)
 
         if form.is_valid():
             form.save()
@@ -76,7 +74,7 @@ def home(request):
     home = Post.objects.get(category=Category.objects.get(name='Acasa'))
 
     if request.user.is_authenticated:
-        form = PageDataForm(request.POST or None, initial={
+        form = PageDataForm(request.POST or None, request.FILES or None, initial={
             'title': home.title,
             'body': home.body,
         })
