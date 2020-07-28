@@ -4,7 +4,7 @@ body {
 
 .frame-square {
     width: 100%;
-    padding-top: 100%;
+    padding-top: 75%; /* 4:3 ratio */
     position: relative;
 }
 
@@ -23,8 +23,8 @@ body {
     padding: 0.2rem;
 }
 
-@media (max-width: 767px){
-    .frame-square{
+@media (max-width: 767px) {
+    .frame-square {
         display: none;
     }
 }
