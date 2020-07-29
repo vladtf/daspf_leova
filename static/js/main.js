@@ -1,3 +1,4 @@
+
 // tinymce.init({selector: 'textarea'});
 
 if (document.getElementById('id_body') !== null) {
