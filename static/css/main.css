@@ -23,9 +23,31 @@ body {
     padding: 0.2rem;
 }
 
+.header-top {
+    position: relative;
+    text-align: center;
+}
+
+.header-text {
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    font-size: 2rem;
+    color: white;
+    text-shadow: 2px 2px #000000;
+}
+
 @media (max-width: 767px) {
     .frame-square {
         display: none;
+    }
+
+    .header-text {
+        left: 50%;
+        width: 80%;
+        font-size: 0.8rem;
     }
 }
 

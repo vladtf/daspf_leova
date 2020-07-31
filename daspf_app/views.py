@@ -31,7 +31,7 @@ def home(request):
 def post_index(request):
     post_list = Post.objects.all().filter(visible=True).order_by('-created_at')
 
-    posts = paginate(request, post_list, post_per_page=2)
+    posts = paginate(request, post_list, post_per_page=5)
     context = {'posts': posts}
     return render(request, 'views/post/post_index.html', context=context)
 

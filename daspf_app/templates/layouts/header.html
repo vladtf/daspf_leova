@@ -1,10 +1,13 @@
 {% load static %}
 <header>
-    <div class="header-top" style="text-align: center;">
-        <a href="{% url 'index' %}">
+    <a href="{% url 'index' %}">
+        <div class="header-top" style="text-align: center;">
             <img src="{% static 'images/leova-header.jpg' %}" alt="" style="width: 100%;">
-        </a>
-    </div>
+            <div class="header-text">
+                DIRECȚIA ASISTENȚĂ SOCIALĂ ȘI PROTECȚIE A FAMILIEI
+            </div>
+        </div>
+    </a>
 
     <div class="header-bottom">
         {# Navbar #}
