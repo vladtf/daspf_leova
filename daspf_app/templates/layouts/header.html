@@ -1,13 +1,19 @@
 {% load static %}
 <header>
-    <a href="{% url 'index' %}">
-        <div class="header-top" style="text-align: center;">
-            <img src="{% static 'images/leova-header.jpg' %}" alt="" style="width: 100%;">
+{#    <a href="{% url 'index' %}">#}
+        <div class="header-top">
             <div class="header-text">
-                DIRECȚIA ASISTENȚĂ SOCIALĂ ȘI PROTECȚIE A FAMILIEI
+                <p>
+                    DIRECȚIA ASISTENȚĂ SOCIALĂ ȘI PROTECȚIE A FAMILIEI
+                </p>
             </div>
+            <img class="header-logo" src="{% static 'images/leova-logo.jpg' %}" alt="">
+
+            {#            <div class="header-image" style="background: url('{% static 'images/leova.jpg' %}') no-repeat" alt="">#}
+            {#            </div>#}
+{#            <img class="header-image" src="{% static 'images/leova.jpg' %}" alt="">#}
         </div>
-    </a>
+{#    </a>#}
 
     <div class="header-bottom">
         {# Navbar #}

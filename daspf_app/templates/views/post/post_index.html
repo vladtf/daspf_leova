@@ -10,14 +10,14 @@
                     <div class="card-body d-flex flex-column align-items-start">
                         <strong class="d-inline-block mb-2 text-primary">{{ post.category }}</strong>
                         <h3 class="mb-0">
-                            <a class="text-dark" href="#">{{ post.title }}</a>
+                            <a class="text-dark" href="{% url 'post' post_id=post.id %}">{{ post.title }}</a>
                         </h3>
                         <div class="mb-1 text-muted">{{ post.get_date }}</div>
-                        <p class="card-text mb-auto" id="post_body">{{ post.body| striptags | truncatechars:50 }}</p>
-                        <a href="#">Citește mai departe</a>
+                        <p class="card-text mb-auto" id="post_body">{{ post.body| striptags | truncatechars:100 }}</p>
+                        <a class="btn btn-outline-success btn-link" href="{% url 'post' post_id=post.id %}">Citește mai departe</a>
                     </div>
-                    <img class="card-img-right flex-auto d-none d-md-block"
-                         style="width: 300px; height: 250px; border-radius: 0.25rem; object-fit: cover"
+                    <img class="card-img-top flex-auto d-none d-md-block"
+                         style="width: 300px; height: 235px; border-radius: 0.25rem; object-fit: cover"
                          src="{{ post.imageURL }}">
                 </div>
             </div>

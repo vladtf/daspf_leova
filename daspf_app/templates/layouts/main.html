@@ -7,14 +7,12 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.ico' %}"/>
 
-    <!-- CSS only -->
-
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
           integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <!-- Google Fonts -->
     <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons&display=swap">
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
     <!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
@@ -32,24 +30,39 @@
 </head>
 <body>
 <div class="container">
-    <!-- Navbar -->
-    {% include 'layouts/header.html' %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Navbar -->
+            {% include 'layouts/header.html' %}
+        </div>
+    </div>
 
     <div class="row py-2">
+
+        <!-- Right sidebar -->
+        <div class="col-lg-2 order-2 order-lg-1">
+            {% include 'layouts/sidebar.html' %}
+        </div>
+
         <!-- Content -->
-        <div class="col-md-9">
+        <div class="col-lg-8 order-1 order-lg-2">
             {% block content %}
             {% endblock content %}
         </div>
 
-        <!-- Sidebar -->
-        <div class="col-md-3 border-left border-secondary">
+        <!-- Right sidebar -->
+        <div class="col-lg-2 order-3 order-lg-3">
             {% include 'layouts/sidebar.html' %}
         </div>
     </div>
 
-    <!-- Footer -->
-    {% include 'layouts/footer.html' %}
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Footer -->
+            {% include 'layouts/footer.html' %}
+        </div>
+    </div>
 </div>
 
 
@@ -79,14 +92,18 @@
         }
     });
 
-    {#basic.croppie('bind', {#}
-    {#    url: '{% static 'images/placeholder.jpg' %}',#}
-    {#    points: [150, 469, 280, 739]#}
-    {#});#}
+    /*
+    basic.croppie('bind', {
+        url: '{% static 'images/placeholder.jpg' %}',
+        points: [150, 469, 280, 739]
+    });
+*/
+
     //on button click
     basic.croppie('result', 'html').then(function (html) {
         // html is div (overflow hidden)
         // with img positioned inside.
-    });</script>
+    });
+</script>
 </body>
 </html>
