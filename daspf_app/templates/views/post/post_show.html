@@ -75,10 +75,10 @@
             <!--/.Carousel Wrapper-->
         </div>
     </div>
-    <script type="text/javascript">
-        document.querySelector('meta[property="og:title"]').setAttribute("content", "{{post.title}}");
-        document.querySelector('meta[property="og:description"]').setAttribute("content", "{{ post.body| striptags | truncatechars:100 }}");
-        document.querySelector('meta[property="og:image"]').setAttribute("content", "{{post.imageURL}}");
-        document.querySelector('meta[property="og:type"]').setAttribute("content", "article");
-    </script>
+{#    <script type="text/javascript">#}
+{#        document.querySelector('meta[property="og:title"]').setAttribute("content", "{{post.title}}");#}
+{#        document.querySelector('meta[property="og:description"]').setAttribute("content", "{{ post.body| striptags | truncatechars:100 }}");#}
+{#        document.querySelector('meta[property="og:image"]').setAttribute("content", "{{post.imageURL}}");#}
+{#        document.querySelector('meta[property="og:type"]').setAttribute("content", "article");#}
+{#    </script>#}
 {% endblock content %}

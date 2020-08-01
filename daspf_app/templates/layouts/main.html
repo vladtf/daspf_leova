@@ -10,10 +10,10 @@
     <!-- Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1"/>
 
-    <meta property="og:url" content="">
-    <meta property="og:title" content="DASPF Leova">
-    <meta property="og:description" content="DIRECȚIA ASISTENȚĂ SOCIALĂ ȘI PROTECȚIE A FAMILIEI">
-    <meta property="og:image" content="">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title" content="{% if post %}{{ post.title }}{% else %} DASPF Leova {% endif %}">
+    <meta property="og:description" content="{% if post %}{{ post.body | striptags |truncatechars:50 }}{% else %}DIRECȚIA ASISTENȚĂ SOCIALĂ ȘI PROTECȚIE A FAMILIEI{% endif %}">
+    <meta property="og:image" content="{% if post %}{{ post.imageURL}}{% else %}{% static 'images/leova-logo.jpg' %}{% endif %}">
     <meta property="og:type" content="website">
 
     <!-- Font Awesome -->
