@@ -8,7 +8,7 @@ class PostImageAdmin(admin.StackedInline):
 
 
 @admin.register(Post)
-class PostAdminAdmin(admin.ModelAdmin):
+class PostAdmin(admin.ModelAdmin):
     inlines = [PostImageAdmin]
 
     class Meta:

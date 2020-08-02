@@ -1,9 +1,10 @@
 from itertools import chain
 
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.forms import modelformset_factory
 from django.shortcuts import render, redirect, get_object_or_404
 
-from daspf_app.forms import PostForm, PageDataForm
+from daspf_app.forms import PostForm, PageDataForm, PostFullForm, ImageForm
 from daspf_app.models import Post, Category, PostImage
 
 
@@ -31,7 +32,7 @@ def home(request):
 def post_index(request):
     post_list = Post.objects.all().filter(visible=True).order_by('-created_at')
 
-    posts = paginate(request, post_list, post_per_page=5)
+    posts = paginate(request, post_list, post_per_page=2)
     context = {'posts': posts}
     return render(request, 'views/post/post_index.html', context=context)
 
@@ -53,14 +54,22 @@ def post_create(request):
     if not request.user.is_authenticated:
         return redirect('index')
 
+    ImageFormSet = modelformset_factory(PostImage, form=ImageForm, extra=3)
     post = Post(created_by=request.user)
     form = PostForm(request.POST or None, request.FILES or None, instance=post)
+    formset = ImageFormSet(request.POST or None, request.FILES or None, queryset=PostImage.objects.none())
 
-    if form.is_valid():
-        form.save()
+    if form.is_valid() and formset.is_valid():
+        post = form.save()
+
+        for image_form in formset.cleaned_data:
+            if 'image' in image_form:
+                image = image_form['image']
+                PostImage.objects.create(image=image, post=post)
+
         return redirect('index')
 
-    context = {'form': form}
+    context = {'form': form, 'formset': formset}
     return render(request, 'views/post/post_edit.html', context=context)
 
 

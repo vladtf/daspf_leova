@@ -1,6 +1,6 @@
 from django import forms
 
-from daspf_app.models import Post
+from daspf_app.models import Post, PostImage
 
 
 class PostForm(forms.ModelForm):
@@ -12,6 +12,23 @@ class PostForm(forms.ModelForm):
             'category',
             'image',
         ]
+
+
+class ImageForm(forms.ModelForm):
+    image = forms.ImageField(label='Image')
+
+    class Meta:
+        model = PostImage
+        fields = [
+            'image'
+        ]
+
+
+class PostFullForm(PostForm):
+    images = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
+
+    class Meta(PostForm.Meta):
+        fields = PostForm.Meta.fields + ['images']
 
 
 class PageDataForm(forms.Form):

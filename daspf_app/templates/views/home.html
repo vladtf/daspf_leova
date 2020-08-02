@@ -4,15 +4,12 @@
 {% block content %}
     {% if user.is_authenticated %}
         <form action="." method="POST" class="my-2" enctype="multipart/form-data">
+            {% csrf_token %}
 
             {% block js %}
                 {{ form.media }}
             {% endblock js %}
-            <div class="row">
-                <div id="cropper"></div>
-            </div>
 
-            {% csrf_token %}
             {{ form }}
 
             <input type="submit" class="btn btn-outline-success btn-success mt-2" value="Salvează">
