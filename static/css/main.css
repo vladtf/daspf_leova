@@ -73,6 +73,10 @@ body {
     /*transform: translate(-50%, -50%);*/
 }
 
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1
+}
+
 @media (max-width: 992px) {
 
     .search-field {

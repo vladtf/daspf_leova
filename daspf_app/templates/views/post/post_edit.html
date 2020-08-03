@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data" id="postForm">
         {% csrf_token %}
         {% for hidden in form.hidden_fields %}
             {{ hidden }}
@@ -21,7 +21,7 @@
                 <label for="id_category">Categorie: </label>
                 {{ form.category }}
             </div>
-            <div class="col-md-12 py-2 form-group">
+            <div class="col-md-12 pt-2 pb-4 form-group">
                 <label for="id_image">Imagine: </label>
                 {{ form.image }}
             </div>
@@ -54,6 +54,16 @@
         </div>
 
     </form>
+
+    <div class="col-md-12 py-2">
+        <form method="POST" action="" id="addForm">
+            {% csrf_token %}
+            <label for="extra">Nr. imagini:</label>
+            <input type="number" name="extra" id="extra" min="0" value="3" form="addForm">
+
+            <input class="btn btn-success btn-outline-success" type="submit" value="Adauga" form="addForm">
+        </form>
+    </div>
 
 
     <script>

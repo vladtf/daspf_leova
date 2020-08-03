@@ -98,7 +98,7 @@ def events(request):
 
     posts = paginate(request, post_list)
     context = {'posts': posts}
-    return render(request, 'views/events.html', context=context)
+    return render(request, 'views/post/post_index.html', context=context)
 
 
 def contacts(request):
