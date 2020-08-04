@@ -2,7 +2,12 @@
 {% load static %}
 
 {% block content %}
-    <div>
-        <h1>Contacts</h1>
-    </div>
+    <form action="{% url 'contacts' %}" method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <input type="submit" value="Trimite">
+    </form>
+
 {% endblock content %}

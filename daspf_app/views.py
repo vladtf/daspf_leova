@@ -1,11 +1,12 @@
 from itertools import chain
 
+from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.forms import modelformset_factory
 from django.shortcuts import render, redirect, get_object_or_404
 
-from daspf_app.forms import PostForm, PageDataForm, PostFullForm, ImageForm
-from daspf_app.models import Post, Category, PostImage
+from daspf_app.forms import PostForm, PageDataForm, PostFullForm, ImageForm, MessageForm
+from daspf_app.models import Post, Category, PostImage, Message
 
 
 def home(request):
@@ -102,7 +103,15 @@ def events(request):
 
 
 def contacts(request):
-    context = {}
+    message = Message()
+    form = MessageForm(request.POST or None, request.FILES or None, instance=message)
+
+    if form.is_valid():
+        form.save()
+        messages.success(request, message='Mesaj trimis cu succes.')
+        return redirect('post_index')
+
+    context = {'form': form}
     return render(request, 'views/contacts.html', context=context)
 
 

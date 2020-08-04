@@ -2,6 +2,7 @@ from datetime import datetime
 
 from django.contrib.auth.models import User
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Category(models.Model):
@@ -49,3 +50,14 @@ class Post(models.Model):
 class PostImage(models.Model):
     post = models.ForeignKey(Post, default=None, on_delete=models.CASCADE)
     image = models.ImageField(null=True, blank=True, default='placeholder.jpg')
+
+
+class Message(models.Model):
+    text = models.CharField(null=False, max_length=500)
+    email = models.EmailField(null=False, max_length=50)
+    phone = PhoneNumberField(null=True)
+    name = models.CharField(null=False, max_length=50)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email + ' - ' + str(self.created_at)

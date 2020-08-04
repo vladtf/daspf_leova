@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'daspf_app.apps.DaspfAppConfig',
+
+    'phonenumber_field',
+
 ]
 
 MIDDLEWARE = [

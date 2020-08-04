@@ -1,6 +1,7 @@
 from django import forms
+from phonenumber_field.formfields import PhoneNumberField
 
-from daspf_app.models import Post, PostImage
+from daspf_app.models import Post, PostImage, Message
 
 
 class PostForm(forms.ModelForm):
@@ -39,3 +40,15 @@ class PageDataForm(forms.Form):
         "class": "my-2 w-100",
     }))
     # photo = CroppieField()
+
+
+class MessageForm(forms.ModelForm):
+    phone = PhoneNumberField(region='RO')
+    class Meta:
+        model = Message
+        fields = [
+            'email',
+            'name',
+            'phone',
+            'text',
+        ]
