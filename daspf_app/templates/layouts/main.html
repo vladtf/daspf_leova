@@ -13,6 +13,7 @@
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
     <meta property="og:title" content="{% if post %}{{ post.title }}{% else %} DASPF Leova {% endif %}">
     <meta property="og:description" content="
+
             {% if post %}{{ post.body | striptags |truncatechars:50 }}{% else %}DIRECȚIA ASISTENȚĂ SOCIALĂ ȘI PROTECȚIE A FAMILIEI{% endif %}">
     <meta property="og:image"
           content="{% if post %}{{ post.imageURL }}{% else %}{% static 'images/leova-logo.jpg' %}{% endif %}">
@@ -35,7 +36,7 @@
 
 </head>
 <body>
-<div class="container">
+<div class="container" id="main">
 
     <div class="row">
         <div class="col-lg-12">
@@ -88,5 +89,8 @@
 <!-- Main.js -->
 <script src="{% static 'js/main.js' %}" type="text/javascript"></script>
 
+{% if alert_flag %}
+    <script>alert("{{ alert_message }}")</script>
+{% endif %}
 </body>
 </html>

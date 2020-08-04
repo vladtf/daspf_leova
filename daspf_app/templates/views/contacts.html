@@ -2,17 +2,17 @@
 {% load static %}
 
 {% block content %}
-    <form action="{% url 'contacts' %}" method="post" class="border border-dark p-5 m-5">
+    <form action="{% url 'contacts' %}" method="post" class="border border-dark contact-form p-lg-5 m-lg-5 p-2">
         {% csrf_token %}
         <p class="h4 mb-4">FORMULAR DE CONTACT</p>
         {{ form.as_p }}
 
-        <button type="submit" class="btn btn-info btn-block">Trimite</button>
+        <button type="submit" class="btn btn-outline-info btn-info btn-block">Trimite</button>
     </form>
 
     <script>
-        document.getElementById('id_phone').classList.add('w-100')
-        document.getElementById('id_email').classList.add('w-100')
+        document.getElementById('{{ form.phone.id_for_label }}').classList.add('w-100')
+        document.getElementById('{{form.email.id_for_label }}').classList.add('w-100')
     </script>
 
 {% endblock content %}

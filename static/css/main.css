@@ -2,7 +2,7 @@ body {
     margin: 0;
 }
 
-.container {
+#main {
     max-width: 80%;
 }
 
@@ -73,11 +73,18 @@ body {
     /*transform: translate(-50%, -50%);*/
 }
 
+.errorlist{
+    color: #ae3737;
+}
+
 input[type=number]::-webkit-inner-spin-button {
     opacity: 1
 }
 
 @media (max-width: 992px) {
+    #main {
+        max-width: 100%;
+    }
 
     .search-field {
         width: 100% !important;

@@ -106,12 +106,16 @@ def contacts(request):
     message = Message()
     form = MessageForm(request.POST or None, request.FILES or None, instance=message)
 
+    alert_message = ''
+    alert_flag = False
+
     if form.is_valid():
         form.save()
-        messages.success(request, message='Mesaj trimis cu succes.')
-        return redirect('post_index')
 
-    context = {'form': form}
+        alert_flag = True
+        alert_message = 'Mesaj trimis cu succes.'
+
+    context = {'form': form, 'alert_message': alert_message, 'alert_flag': alert_flag}
     return render(request, 'views/contacts.html', context=context)
 
 
