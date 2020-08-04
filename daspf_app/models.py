@@ -53,10 +53,11 @@ class PostImage(models.Model):
 
 
 class Message(models.Model):
-    text = models.CharField(null=False, max_length=500)
     email = models.EmailField(null=False, max_length=50)
     phone = PhoneNumberField(null=True)
     name = models.CharField(null=False, max_length=50)
+    text = models.CharField(null=False, max_length=500)
+
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

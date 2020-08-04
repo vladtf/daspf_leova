@@ -39,11 +39,20 @@ class PageDataForm(forms.Form):
     body = forms.CharField(required=True, label='Conținut postare', widget=forms.Textarea(attrs={
         "class": "my-2 w-100",
     }))
-    # photo = CroppieField()
 
 
 class MessageForm(forms.ModelForm):
-    phone = PhoneNumberField(region='RO')
+
+    name = forms.CharField(label='Nume', widget=forms.TextInput(attrs={
+        "class": "w-100"
+    }))
+
+    phone = PhoneNumberField(region='MD')
+
+    text = forms.CharField(label='Mesaj', widget=forms.Textarea(attrs={
+        "class": "w-100",
+    }))
+
     class Meta:
         model = Message
         fields = [
