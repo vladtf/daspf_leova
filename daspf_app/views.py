@@ -115,6 +115,8 @@ def contacts(request):
         alert_flag = True
         alert_message = 'Mesaj trimis cu succes.'
 
+        form = MessageForm()
+
     context = {'form': form, 'alert_message': alert_message, 'alert_flag': alert_flag}
     return render(request, 'views/contacts.html', context=context)
 

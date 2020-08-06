@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'daspf_app.apps.DaspfAppConfig',
 
     'phonenumber_field',
-
+    'django_social_share',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +58,9 @@ ROOT_URLCONF = 'daspf_leova.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'daspf_app/templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

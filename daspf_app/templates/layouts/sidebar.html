@@ -1,4 +1,6 @@
 {% load static %}
+{% load social_share %}
+
 <div class="row py-2">
     <div class="col-sm-12 py-3">
         <div class="card shadow-sm">
@@ -34,7 +36,7 @@
             </a>
             <div class="card-body">
                 <div class="card-text">
-                    Some text
+                    {% post_to_facebook object_or_url "Post to Facebook!" %}
                 </div>
             </div>
         </div>
