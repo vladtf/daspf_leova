@@ -1,4 +1,4 @@
-
+import ('croppie')
 // tinymce.init({selector: 'textarea'});
 
 if (document.getElementById('id_body') !== null) {
@@ -15,3 +15,5 @@ $('.carousel').on('slide.bs.carousel', function (event) {
         height: height
     });
 });
+
+$('.my-image').croppie();

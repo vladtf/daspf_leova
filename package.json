@@ -6,7 +6,9 @@
   "dependencies": {
     "croppie": "^2.6.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "webpack": "^4.44.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
