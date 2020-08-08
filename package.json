@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "concurrently": "^5.3.0",
     "croppie": "^2.6.5"
   },
   "devDependencies": {
@@ -13,7 +14,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run compile-scripts && npm run compile-styles",
+
+    "watch": "concurrently --kill-others \"npm run compile-scripts -- --watch\" \"npm run compile-styles -- --watch\"",
+    "dev": "concurrently --kill-others \"npm run compile-scripts\" \"npm run compile-styles\"",
+
     "compile-scripts": "webpack",
     "compile-styles": "sass static/css/app.scss static/assets/app.css"
   },
