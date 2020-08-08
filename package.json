@@ -7,12 +7,15 @@
     "croppie": "^2.6.5"
   },
   "devDependencies": {
+    "sass": "^1.26.10",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "npm run compile-scripts && npm run compile-styles",
+    "compile-scripts": "webpack",
+    "compile-styles": "sass static/css/app.scss static/assets/app.css"
   },
   "repository": {
     "type": "git",

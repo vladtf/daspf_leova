@@ -1,4 +1,5 @@
 import 'croppie'
+
 // tinymce.init({selector: 'textarea'});
 
 if (document.getElementById('id_body') !== null) {
@@ -16,4 +17,13 @@ $('.carousel').on('slide.bs.carousel', function (event) {
     });
 });
 
-$('.my-image').croppie();
+$('.my-image').croppie({
+    viewport: {
+        width: 150,
+        height: 150
+    },
+    boundary:{
+        width: 300,
+        height: 300,
+    }
+});
