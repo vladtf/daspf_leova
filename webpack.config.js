@@ -1,7 +1,7 @@
 const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-
     mode: 'development',
 
     entry: './static/js/main.js',
@@ -11,19 +11,33 @@ module.exports = {
         filename: 'app.js'
     },
 
-    // module: {
-    //     rules: [
-    //         {
-    //             test: /\.s[ac]ss$/i,
-    //             use: [
-    //                 // Creates `style` nodes from JS strings
-    //                 'style-loader',
-    //                 // Translates CSS into CommonJS
-    //                 'css-loader',
-    //                 // Compiles Sass to CSS
-    //                 'sass-loader',
-    //             ],
-    //         },
-    //     ],
-    // },
+    module: {
+        rules: [
+            {
+                test: /\.(scss)$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'sass-loader',
+                    {
+                        // Loader for webpack to process CSS with PostCSS
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: function () {
+                                return [
+                                    require('autoprefixer')
+                                ];
+                            }
+                        }
+                    },
+                ]
+            }
+        ]
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            path: path.resolve(__dirname, 'static/assets'),
+            filename: 'app.css'
+        }),
+    ]
 };
