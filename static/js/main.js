@@ -1,7 +1,5 @@
 import 'croppie'
 
-// tinymce.init({selector: 'textarea'});
-
 if (document.getElementById('id_body') !== null) {
     CKEDITOR.replace('id_body', {
         extraPlugins: ['autogrow', 'image2', 'indentlist']
