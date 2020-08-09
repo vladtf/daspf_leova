@@ -14,10 +14,9 @@
             <h6><small>de către <strong>{{ post.created_by }}</strong></small></h6>
             <h6>{{ post.created_at|date:"H:m  |  d M Y" }}</h6>
             {% if user.is_authenticated %}
-                <a class="btn btn-success btn-outline-success" href="{% url 'post_edit' post_id=post.id %}">Edit
-                    post</a>
+                <a class="btn btn-success" href="{% url 'post_edit' post_id=post.id %}">Edit post</a>
             {% endif %}
-            {% post_to_facebook object_or_url '<button type="button" class="btn btn-fb"><i class="fab fa-facebook-f pr-1"></i> Facebook</button>' %}
+            {#            {% post_to_facebook object_or_url '<button type="button" class="btn mt-2" style="background: #3B5998; color: white;"><i class="fab fa-facebook-f pr-1"></i> Facebook</button>' %}#}
         </div>
     </div>
 
@@ -76,11 +75,11 @@
             </div>
             <!--/.Carousel Wrapper-->
         </div>
+
     </div>
-    {#    <script type="text/javascript">#}
-    {#        document.querySelector('meta[property="og:title"]').setAttribute("content", "{{post.title}}");#}
-    {#        document.querySelector('meta[property="og:description"]').setAttribute("content", "{{ post.body| striptags | truncatechars:100 }}");#}
-    {#        document.querySelector('meta[property="og:image"]').setAttribute("content", "{{post.imageURL}}");#}
-    {#        document.querySelector('meta[property="og:type"]').setAttribute("content", "article");#}
-    {#    </script>#}
+    <div class="row align-items-center mt-5">
+        <div class="col-lg-12">
+            <div class="sharethis-inline-share-buttons mt-2"></div>
+        </div>
+    </div>
 {% endblock content %}
