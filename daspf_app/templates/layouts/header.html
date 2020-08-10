@@ -1,19 +1,21 @@
 {% load static %}
 <header>
-{#    <a href="{% url 'index' %}">#}
-        <div class="header-top" onclick="location.href='{% url 'post_index' %}';" style="cursor: pointer">
-            <div class="header-text">
-                <p>
-                    DIRECȚIA ASISTENȚĂ SOCIALĂ ȘI PROTECȚIE A FAMILIEI
-                </p>
-            </div>
-            <img class="header-logo" src="{% static 'images/leova-logo.jpg' %}" alt="">
-
-            {#            <div class="header-image" style="background: url('{% static 'images/leova.jpg' %}') no-repeat" alt="">#}
-            {#            </div>#}
-{#            <img class="header-image" src="{% static 'images/leova.jpg' %}" alt="">#}
+    {#    <a href="{% url 'index' %}">#}
+    <div class="header-top" onclick="location.href='{% url 'post_index' %}';" style="cursor: pointer">
+        <div class="header-text">
+            <p>
+                DIRECȚIA ASISTENȚĂ <br>
+                SOCIALĂ ȘI PROTECȚIE <br>
+                A FAMILIEI
+            </p>
         </div>
-{#    </a>#}
+        <img class="header-logo" src="{% static 'images/leova-logo.png' %}" alt="">
+
+        {#            <div class="header-image" style="background: url('{% static 'images/leova.jpg' %}') no-repeat" alt="">#}
+        {#            </div>#}
+        {#            <img class="header-image" src="{% static 'images/leova.jpg' %}" alt="">#}
+    </div>
+    {#    </a>#}
 
     <div class="header-bottom">
         {# Navbar #}

@@ -1,0 +1,33 @@
+
+@media (max-width: 992px) {
+  #main {
+    max-width: 100%;
+  }
+
+  .search-field {
+    width: 100% !important;
+    margin-bottom: 0.5rem;
+  }
+
+  .search-button {
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  .header-text {
+    left: 50%;
+    width: 80%;
+    font-size: 3vw;
+  }
+
+  .header-image {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1600px) {
+  #main{
+    max-width: 1560px;
+  }
+}
+

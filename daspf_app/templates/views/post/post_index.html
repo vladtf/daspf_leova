@@ -14,7 +14,7 @@
                         </h3>
                         <div class="mb-1 text-muted">{{ post.get_date }}</div>
                         <p class="card-text mb-auto" id="post_body">{{ post.body| striptags | truncatechars:100 }}</p>
-                        <a class="btn btn-outline-success btn-link" href="{% url 'post_show' post_id=post.id %}">Citește mai departe</a>
+                        <a class="btn btn-outline-primary btn-link" href="{% url 'post_show' post_id=post.id %}">Citește mai departe</a>
                     </div>
                     <img class="card-img-top flex-auto d-none d-md-block"
                          style="width: 300px; height: 235px; border-radius: 0.25rem; object-fit: cover"
