@@ -2,28 +2,20 @@
 {% load social_share %}
 
 <div class="row py-2">
+
     <div class="col-sm-12 py-3">
         <a href="https://www.facebook.com/daspf.leova.7" title="Facebook" class="btn btn-facebook btn-lg"><i
                 class="fab fa-facebook-f"></i> DASPF Leova</a>
     </div>
+
     <div class="col-sm-12 py-3">
-        <div class="card shadow-sm sidebar-card" style="cursor: pointer;" onclick="location.href='http://www.leova.md'">
-            <div class="row justify-content-center">
-                <div class="col-3 col-xl-5">
-                    <a href="http://www.leova.md">
-                        <img class="card-img" src="{% static 'images/leova-logo.png' %}" alt="">
-                    </a>
-                </div>
-                <div class="col-6 col-xl-7">
-                    <div class="card-body">
-                        <p class="card-text">
-                            <strong>Consiliul <br>Raional <br>Leova</strong>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% include 'components/sidebar_item.html' with url='http://www.leova.md/' title='Consiliul <br>Raional <br>Leova'  img='/images/leova-logo.png' %}
     </div>
+
+    <div class="col-sm-12 py-3">
+        {% include 'components/sidebar_item.html' with url='http://parlament.md' title='Parlamentul <br>Republicii <br>Moldova' img='images/moldova-stema.svg' %}
+    </div>
+
     <div class="col-sm-12 py-3">
         <div class="card shadow-sm">
             <a href="#">

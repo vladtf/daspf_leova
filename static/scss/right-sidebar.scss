@@ -1,7 +1,7 @@
 .sidebar-card {
 
   .card-text {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .card-img {
@@ -23,7 +23,16 @@
 
   @media (max-width: 991px) {
     .card-text{
-      font-size: 4rem;
+      font-size: 3rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .card-text{
+      font-size: 5vw;
+    }
+    .card-img{
+      padding: 0;
     }
   }
 }
