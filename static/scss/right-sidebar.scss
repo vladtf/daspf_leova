@@ -1,7 +1,9 @@
 .sidebar-card {
 
   .card-text {
-    font-size: 1.8rem;
+    //font-size: 1.8rem;
+    //font-size: 1vh;
+    word-wrap: normal;
   }
 
   .card-img {
@@ -11,27 +13,27 @@
 
   @media (max-width: 1600px) {
     .card-text {
-      font-size: 1.3rem;
+      //font-size: 1.3rem;
     }
   }
 
   @media (max-width: 1199px) {
-    .card-text{
-      font-size: 1rem;
+    .card-text {
+      //font-size: 1rem;
     }
   }
 
   @media (max-width: 991px) {
-    .card-text{
-      font-size: 3rem;
+    .card-text {
+      //font-size: 3rem;
     }
   }
 
   @media (max-width: 767px) {
-    .card-text{
-      font-size: 5vw;
+    .card-text {
+      //font-size: 5vw;
     }
-    .card-img{
+    .card-img {
       padding: 0;
     }
   }

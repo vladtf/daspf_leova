@@ -1,9 +1,11 @@
+window.jQuery = window.$ = require('jquery');
+
 import '../scss/main.scss';
 
 import 'bootstrap';
 import 'popper.js';
 
-window.jQuery = window.$ = require('jquery');
+import './fit-text'
 
 
 if (document.getElementById('id_body') !== null) {
@@ -20,6 +22,8 @@ $('.carousel').on('slide.bs.carousel', function (event) {
         height: height
     });
 });
+
+$('.card-text').fitText();
 
 // $('.my-image').croppie({
 //     viewport: {
