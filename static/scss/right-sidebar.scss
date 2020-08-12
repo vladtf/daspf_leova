@@ -1,0 +1,29 @@
+.sidebar-card {
+
+  .card-text {
+    font-size: 2rem;
+  }
+
+  .card-img {
+    width: 100%;
+    padding: 1rem 0 1rem 1rem;
+  }
+
+  @media (max-width: 1600px) {
+    .card-text {
+      font-size: 1.3rem;
+    }
+  }
+
+  @media (max-width: 1199px) {
+    .card-text{
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .card-text{
+      font-size: 4rem;
+    }
+  }
+}

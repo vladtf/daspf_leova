@@ -29,19 +29,21 @@
             </li>
 
         </ul>
-
-        {% if user.is_authenticated %}
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+        <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+                <li class="nav-item pr-2">
                     <a class="btn btn-outline-success" href="{% url 'post_create' %}">Postare noua</a>
                 </li>
-            </ul>
-        {% endif %}
+            {% endif %}
 
-        <form class="form-inline my-2 my-lg-0 ml-auto">
-            <input class="form-control search-field" type="search" placeholder="Caută ..." aria-label="Search">
-            <button class="btn btn-outline-success btn-md my-2 my-sm-0 ml-lg-2 search-button" type="submit">Caută</button>
-        </form>
+            <form class="form-inline my-2 my-lg-0 ">
+                <input class="form-control search-field" type="search" placeholder="Caută ..." aria-label="Search">
+                <button class="btn btn-outline-success btn-md my-2 my-sm-0 ml-lg-2 search-button" type="submit">Caută
+                </button>
+            </form>
+        </ul>
+
+
     </div>
 </nav>
 
