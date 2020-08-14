@@ -13,8 +13,10 @@
                             <a class="text-dark" href="{% url 'post_show' post_id=post.id %}">{{ post.title }}</a>
                         </h3>
                         <div class="mb-1 text-muted">{{ post.get_date }}</div>
-                        <p class="card-text mb-auto" id="post_body">{{ post.body| striptags | truncatechars:100 }}</p>
-                        <a class="btn btn-outline-primary btn-link" href="{% url 'post_show' post_id=post.id %}">Citește mai departe</a>
+                        <p class="card-text mb-auto"
+                           style="font-size: large">{{ post.body | striptags | truncatechars:100 }}</p>
+                        <a class="btn btn-outline-primary btn-link" href="{% url 'post_show' post_id=post.id %}">Citește
+                            mai departe</a>
                     </div>
                     <img class="card-img-top flex-auto d-none d-md-block"
                          style="width: 300px; height: 235px; border-radius: 0.25rem; object-fit: cover"
@@ -24,37 +26,45 @@
         {% endfor %}
 
         {% if posts.has_other_pages %}
-            <ul class="pagination py-2 col-lg-12 px-3">
-                {% if posts.has_previous %}
+            <nav aria-label="Page navigation example" class="table-responsive">
+                <ul class="pagination py-2 col-lg-12 px-3 justify-content-center">
                     <li class="page-item pr-1">
-                        <a class="page-link" href="?page={{ posts.previous_page_number }}">&laquo;</a>
+                        <a class="page-link" href="?page=1">&Lang;</a>
                     </li>
-                {% else %}
-                    <li class="disabled page-item pr-1">
-                        <span class="page-link">&laquo;</span>
-                    </li>
-                {% endif %}
-                {% for i in posts.paginator.page_range %}
-                    {% if posts.number == i %}
-                        <li class="page-item active" style="padding: 0 0.15rem;">
-                            <span class="page-link">{{ i }} <span class="sr-only">(current)</span></span>
+                    {% if posts.has_previous %}
+                        <li class="page-item pr-1">
+                            <a class="page-link" href="?page={{ posts.previous_page_number }}">&lang;</a>
                         </li>
                     {% else %}
-                        <li class="page-item" style="padding: 0 0.15rem">
-                            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                        <li class="disabled page-item pr-1">
+                            <span class="page-link">&lang;</span>
                         </li>
                     {% endif %}
-                {% endfor %}
-                {% if posts.has_next %}
+                    {% for i in posts.paginator.page_range %}
+                        {% if posts.number == i %}
+                            <li class="page-item active" style="padding: 0 0.15rem;">
+                                <span class="page-link">{{ i }} <span class="sr-only">(current)</span></span>
+                            </li>
+                        {% elif i > posts.number|add:'-6' and i < posts.number|add:'6' %}
+                            <li class="page-item" style="padding: 0 0.15rem">
+                                <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if posts.has_next %}
+                        <li class="page-item pl-1">
+                            <a class="page-link" href="?page={{ posts.next_page_number }}">&rang;</a>
+                        </li>
+                    {% else %}
+                        <li class="disabled page-item pl-1">
+                            <span class="page-link">&rang;</span>
+                        </li>
+                    {% endif %}
                     <li class="page-item pl-1">
-                        <a class="page-link" href="?page={{ posts.next_page_number }}">&raquo;</a>
+                        <a class="page-link" href="?page={{ posts.paginator.num_pages }}">&Rang;</a>
                     </li>
-                {% else %}
-                    <li class="disabled page-item pl-1">
-                        <span class="page-link">&raquo;</span>
-                    </li>
-                {% endif %}
-            </ul>
+                </ul>
+            </nav>
         {% endif %}
     </div>
 {% endblock content %}

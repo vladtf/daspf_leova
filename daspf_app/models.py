@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
 from django.contrib.auth.models import User
 from django.db import models
@@ -31,8 +31,8 @@ class Post(models.Model):
         if self.created_at.day == time.day:
             return str(time.hour - self.created_at.hour) + " ore"
         else:
-            if self.created_at.month == time.month:
-                return str(time.day - self.created_at.day) + " zile"
+            if (time.now(timezone.utc) - self.created_at).days < 30:
+                return str((time.now(timezone.utc) - self.created_at).days) + " zile"
             else:
                 if self.created_at.year == time.year:
                     return str(time.month - self.created_at.month) + " luni"

@@ -23,7 +23,7 @@ $('.carousel').on('slide.bs.carousel', function (event) {
     });
 });
 
-$('.card-text').fitText();
+$('.sidebar-card-text').fitText();
 
 // $('.my-image').croppie({
 //     viewport: {
