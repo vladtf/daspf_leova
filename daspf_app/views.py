@@ -2,6 +2,7 @@ from itertools import chain
 
 from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Q
 from django.forms import modelformset_factory
 from django.shortcuts import render, redirect, get_object_or_404
 
@@ -31,7 +32,11 @@ def home(request):
 
 
 def post_index(request):
-    post_list = Post.objects.all().filter(visible=True).order_by('-created_at')
+    search_query = request.GET.get('search') or ''
+
+    post_list = Post.objects.all()\
+        .filter(Q(title__icontains=search_query) | Q(body__icontains=search_query), visible=True)\
+        .order_by('-created_at')
 
     posts = paginate(request, post_list, post_per_page=2)
     context = {'posts': posts}

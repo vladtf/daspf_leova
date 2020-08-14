@@ -36,8 +36,8 @@
                 </li>
             {% endif %}
 
-            <form class="form-inline my-2 my-lg-0 ">
-                <input class="form-control search-field" type="search" placeholder="Caută ..." aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" action="{% url 'post_index' %}">
+                <input class="form-control search-field" type="search" placeholder="Caută ..." aria-label="Search" name="search">
                 <button class="btn btn-outline-success btn-md my-2 my-sm-0 ml-lg-2 search-button" type="submit">Caută
                 </button>
             </form>
