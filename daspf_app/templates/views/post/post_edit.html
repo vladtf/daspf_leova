@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <form method="POST" enctype="multipart/form-data" id="postForm">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {% for hidden in form.hidden_fields %}
             {{ hidden }}
@@ -27,26 +27,17 @@
             </div>
 
 
-            <!--
-            <div class="col-md-12 py-2" style="height: 50rem">
-{#                <img class="my-image" src="{% static 'images/placeholder.jpg' %}" />#}
-            </div>
-            -->
-
-            {#            <div class="form-group">#}
-            {#                <label for="post-image">Images</label>#}
-            {#                <input type="file" name="images" class="form-control-file" id="post-image" multiple>#}
-            {#            </div>#}
-
-            {#            {{ form.images }}#}
-
             {{ formset.management_form }}
 
             {% for form in formset %}
-                <div class="col-md-12 py-2 form-group">
+                <div class="col-md-12 py-2 form-group image-field">
                     {{ form }}
                 </div>
             {% endfor %}
+
+            <div class="col-md-12 py-2">
+                <button class="btn btn-outline-success" type="button" id="add_extra">Adauga imagini</button>
+            </div>
 
             <div class="col-md-12 py-2 form-group">
                 <input class="btn btn-outline-success" type="submit" value="Save">
@@ -55,20 +46,9 @@
 
     </form>
 
-    <div class="col-md-12 py-2">
-        <form method="POST" action="" id="addForm">
-            {% csrf_token %}
-            <label for="extra">Nr. imagini:</label>
-            <input type="number" name="extra" id="extra" min="0" value="3" form="addForm">
-
-            <input class="btn btn-outline-success" type="submit" value="Adauga" form="addForm">
-        </form>
-    </div>
-
-    <img class="my-image" src="{% static 'images/placeholder.jpg' %}" />
 
     <script>
-        document.getElementById('id_title').classList.add('w-100')
-        document.getElementById('id_body').classList.add('w-100')
+        document.getElementById('id_title').classList.add('w-100');
+        document.getElementById('id_body').classList.add('w-100');
     </script>
 {% endblock content %}

@@ -25,6 +25,23 @@ $('.carousel').on('slide.bs.carousel', function (event) {
 
 $('.sidebar-card-text').fitText();
 
+
+let form_count = Number($("[name=form-TOTAL_FORMS]").val());
+
+$("#add_extra").click(function () {
+
+    let image_field = $(
+        '<div class="col-md-12 py-2 form-group image-field">' +
+        '<label for="id_form-' + form_count + '-image">Image: </label>' +
+        '<input type="file" name="form-' + form_count + '-image" accept="image/*" id="id_form-' + form_count + '-image">' +
+        '<input type="hidden" name="form-' + form_count + '-id" id="id_form-' + form_count + '-id">' +
+        '</div>'
+    );
+
+    $('.image-field').last().after(image_field);
+
+    $("[name=form-TOTAL_FORMS]").val(++form_count);
+});
 // $('.my-image').croppie({
 //     viewport: {
 //         width: 150,

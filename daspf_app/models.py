@@ -27,15 +27,17 @@ class Post(models.Model):
 
     @property
     def get_date(self):
-        time = datetime.now()
-        if self.created_at.day == time.day:
-            return str(time.hour - self.created_at.hour) + " ore"
-        else:
-            if (time.now(timezone.utc) - self.created_at).days < 30:
-                return str((time.now(timezone.utc) - self.created_at).days) + " zile"
-            else:
-                if self.created_at.year == time.year:
-                    return str(time.month - self.created_at.month) + " luni"
+        time_delta = datetime.now(timezone.utc) - self.created_at
+
+        if time_delta.seconds < 3600:
+            return str(time_delta.seconds // 60) + " minute"
+
+        if time_delta.days < 1:
+            return str(time_delta.seconds // 3600) + " ore"
+
+        if time_delta.days < 30:
+            return str(time_delta.days) + " zile"
+
         return self.created_at
 
     @property

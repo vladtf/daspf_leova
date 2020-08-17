@@ -38,7 +38,7 @@ def post_index(request):
         .filter(Q(title__icontains=search_query) | Q(body__icontains=search_query), visible=True)\
         .order_by('-created_at')
 
-    posts = paginate(request, post_list, post_per_page=2)
+    posts = paginate(request, post_list, post_per_page=4)
     context = {'posts': posts}
     return render(request, 'views/post/post_index.html', context=context)
 
@@ -73,7 +73,7 @@ def post_create(request):
                 image = image_form['image']
                 PostImage.objects.create(image=image, post=post)
 
-        return redirect('index')
+        return redirect('post_index')
 
     context = {'form': form, 'formset': formset}
     return render(request, 'views/post/post_edit.html', context=context)
