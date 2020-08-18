@@ -34,11 +34,11 @@ def home(request):
 def post_index(request):
     search_query = request.GET.get('search') or ''
 
-    post_list = Post.objects.all()\
-        .filter(Q(title__icontains=search_query) | Q(body__icontains=search_query), visible=True)\
+    post_list = Post.objects.all() \
+        .filter(Q(title__icontains=search_query) | Q(body__icontains=search_query), visible=True) \
         .order_by('-created_at')
 
-    posts = paginate(request, post_list, post_per_page=4)
+    posts = paginate(request, post_list)
     context = {'posts': posts}
     return render(request, 'views/post/post_index.html', context=context)
 
@@ -58,11 +58,12 @@ def post_show(request, post_id):
 
 def post_create(request):
     if not request.user.is_authenticated:
-        return redirect('index')
+        return redirect('post_index')
 
-    ImageFormSet = modelformset_factory(PostImage, form=ImageForm, extra=3)
     post = Post(created_by=request.user)
     form = PostForm(request.POST or None, request.FILES or None, instance=post)
+
+    ImageFormSet = modelformset_factory(PostImage, form=ImageForm, extra=3)
     formset = ImageFormSet(request.POST or None, request.FILES or None, queryset=PostImage.objects.none())
 
     if form.is_valid() and formset.is_valid():
@@ -81,21 +82,20 @@ def post_create(request):
 
 def post_edit(request, post_id):
     if not request.user.is_authenticated:
-        return redirect('index')
+        return redirect('post_index')
 
-    try:
-        post = Post.objects.get(id=post_id)
-        form = PostForm(request.POST or None, request.FILES or None, instance=post)
+    post = get_object_or_404(Post, id=post_id)
+    form = PostForm(request.POST or None, request.FILES or None, instance=post)
 
-        if form.is_valid():
-            form.save()
-            return redirect('index')
+    ImageFormSet = modelformset_factory(PostImage, form=ImageForm, extra=0)
+    formset = ImageFormSet(request.POST or None, request.FILES or None, queryset=post.get_post_images)
 
-        context = {'form': form}
-        return render(request, 'views/post/post_edit.html', context=context)
+    if form.is_valid():
+        form.save()
+        return redirect('post_index')
 
-    except Post.DoesNotExist:
-        return redirect('index')
+    context = {'form': form, 'formset': formset}
+    return render(request, 'views/post/post_edit.html', context=context)
 
 
 def events(request):
@@ -126,7 +126,7 @@ def contacts(request):
     return render(request, 'views/contacts.html', context=context)
 
 
-def paginate(request, post_list, post_per_page=3):
+def paginate(request, post_list, post_per_page=4):
     page = request.GET.get('page', 1)
     paginator = Paginator(post_list, post_per_page)
     try:

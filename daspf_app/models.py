@@ -48,6 +48,11 @@ class Post(models.Model):
             url = '/images/placeholder.png'
         return url
 
+    @property
+    def get_post_images(self):
+        images = PostImage.objects.filter(post=self)
+        return images
+
 
 class PostImage(models.Model):
     post = models.ForeignKey(Post, default=None, on_delete=models.CASCADE)

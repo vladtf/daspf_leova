@@ -5,7 +5,7 @@
 
     <div class="col-sm-12 py-3">
         <a href="https://www.facebook.com/daspf.leova.7" title="Facebook" class="btn btn-facebook btn-lg"><i
-                class="fab fa-facebook-f"></i> DASPF Leova</a>
+                class="fab fa-facebook-f mr-2"></i> DASPF Leova</a>
     </div>
 
     <div class="col-sm-12 py-3">
@@ -17,16 +17,19 @@
     </div>
 
     <div class="col-sm-12 py-3">
-        <div class="card shadow-sm">
-            <a href="#">
-                <img class="card-img-top" src="{% static 'images/placeholder.jpg' %}" alt=""
-                     style="display: block; height: 10rem; width: 100%">
-            </a>
-            <div class="card-body">
-                <div class="card-text">
-                    Some text
-                </div>
-            </div>
-        </div>
+        {% include 'components/sidebar_item.html' with url='http://gov.md/' title='Guvernul <br>Republicii <br>Moldova' img='/images/moldova-stema.svg' %}
     </div>
+
+    <div class="col-sm-12 py-3">
+        {% include 'components/sidebar_item.html' with url='http://www.presedinte.md/' title='Președintele <br>Republicii <br>Moldova' img='/images/moldova-stema.svg' %}
+    </div>
+
+    <div class="col-sm-12 py-3">
+        {% include 'components/sidebar_item.html' with url='http://cancelaria.gov.md/' title='Cancelaria <br>de Stat' img='/images/moldova-stema.svg' %}
+    </div>
+
+    <div class="col-sm-12 py-3">
+        {% include 'components/sidebar_item.html' with url='http://servicii.gov.md/' title='Portalul <br>Serviciilor <br>Publice' img='/images/moldova-stema.svg' %}
+    </div>
+
 </div>
