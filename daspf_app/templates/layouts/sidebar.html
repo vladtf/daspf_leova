@@ -1,6 +1,9 @@
 {% load static %}
 {% load social_share %}
 
+{% load sidebar_elements_data %}
+{% get_elements as elements %}
+
 <div class="row py-2">
 
     <div class="col-sm-12 py-3">
@@ -8,28 +11,10 @@
                 class="fab fa-facebook-f mr-2"></i> DASPF Leova</a>
     </div>
 
-    <div class="col-sm-12 py-3">
-        {% include 'components/sidebar_item.html' with url='http://www.leova.md/' title='Consiliul <br>Raional <br>Leova'  img='/images/leova-logo.png' %}
-    </div>
-
-    <div class="col-sm-12 py-3">
-        {% include 'components/sidebar_item.html' with url='http://parlament.md' title='Parlamentul <br>Republicii <br>Moldova' img='/images/moldova-stema.svg' %}
-    </div>
-
-    <div class="col-sm-12 py-3">
-        {% include 'components/sidebar_item.html' with url='http://gov.md/' title='Guvernul <br>Republicii <br>Moldova' img='/images/moldova-stema.svg' %}
-    </div>
-
-    <div class="col-sm-12 py-3">
-        {% include 'components/sidebar_item.html' with url='http://www.presedinte.md/' title='Președintele <br>Republicii <br>Moldova' img='/images/moldova-stema.svg' %}
-    </div>
-
-    <div class="col-sm-12 py-3">
-        {% include 'components/sidebar_item.html' with url='http://cancelaria.gov.md/' title='Cancelaria <br>de Stat' img='/images/moldova-stema.svg' %}
-    </div>
-
-    <div class="col-sm-12 py-3">
-        {% include 'components/sidebar_item.html' with url='http://servicii.gov.md/' title='Portalul <br>Serviciilor <br>Publice' img='/images/moldova-stema.svg' %}
-    </div>
+    {% for element in elements %}
+        <div class="col-sm-12 py-3">
+            {% include 'components/sidebar_item.html' with url=element.url title=element.title  img=element.image %}
+        </div>
+    {% endfor %}
 
 </div>
