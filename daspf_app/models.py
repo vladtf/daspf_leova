@@ -26,19 +26,8 @@ class Post(models.Model):
         return self.title
 
     @property
-    def get_date(self):
-        time_delta = datetime.now(timezone.utc) - self.created_at
-
-        if time_delta.seconds < 3600:
-            return str(time_delta.seconds // 60) + " minute"
-
-        if time_delta.days < 1:
-            return str(time_delta.seconds // 3600) + " ore"
-
-        if time_delta.days < 30:
-            return str(time_delta.days) + " zile"
-
-        return self.created_at
+    def get_short_date(self):
+        return short_date(self.created_at)
 
     @property
     def imageURL(self):
@@ -69,3 +58,22 @@ class Message(models.Model):
 
     def __str__(self):
         return self.email + ' - ' + str(self.created_at)
+
+    @property
+    def get_short_date(self):
+        return short_date(self.created_at)
+
+
+def short_date(date):
+    time_delta = datetime.now(timezone.utc) - date
+
+    if time_delta.seconds < 3600:
+        return str(time_delta.seconds // 60) + " minute"
+
+    if time_delta.days < 1:
+        return str(time_delta.seconds // 3600) + " ore"
+
+    if time_delta.days < 30:
+        return str(time_delta.days) + " zile"
+
+    return date
