@@ -9,7 +9,10 @@ urlpatterns = [
     path('postare/create', views.post_create, name='post_create'),
 
     path('acasa/', views.home, name='home'),
+
     path('evenimente/', views.events, name='events'),
+
     path('contacte/', views.contacts, name='contacts'),
 
+    path('messages/', views.message_index, name='message_index'),
 ]

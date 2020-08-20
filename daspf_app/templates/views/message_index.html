@@ -1,0 +1,27 @@
+{% extends 'layouts/main.html' %}
+{% load static %}
+
+{% block content %}
+    <table class="table table-responsive table-striped table-hover">
+        <thead>
+        <tr>
+            <th class="col-1">#</th>
+            <th class="col-1">E mail</th>
+            <th class="col-7">Text</th>
+            <th class="col-2">Data</th>
+            <th class="col-1">Detalii</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for message in messages %}
+            <tr>
+                <th scope="row">{{ message.id }}</th>
+                <td>{{ message.email }}</td>
+                <td>{{ message.text }}</td>
+                <td>{{ message.created_at }}</td>
+                <td><a class="btn btn-outline-success" href="#"></a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

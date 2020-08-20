@@ -34,6 +34,9 @@
                 <li class="nav-item pr-2">
                     <a class="btn btn-outline-success" href="{% url 'post_create' %}">Postare noua</a>
                 </li>
+                <li class="nav-item pr-2">
+                    <a class="btn btn-outline-success" href="{% url 'message_index' %}">Mesaje</a>
+                </li>
             {% endif %}
 
             <form class="form-inline my-2 my-lg-0" action="{% url 'post_index' %}">

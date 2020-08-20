@@ -126,6 +126,14 @@ def contacts(request):
     return render(request, 'views/contacts.html', context=context)
 
 
+def message_index(request):
+    messages = Message.objects.all().order_by('-created_at')
+
+    context = {'messages': messages}
+
+    return render(request, 'views/message_index.html', context=context)
+
+
 def paginate(request, post_list, post_per_page=4):
     page = request.GET.get('page', 1)
     paginator = Paginator(post_list, post_per_page)
