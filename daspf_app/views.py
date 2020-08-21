@@ -1,6 +1,7 @@
 from itertools import chain
 
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.forms import modelformset_factory
@@ -56,10 +57,8 @@ def post_show(request, post_id):
     return render(request, 'views/post/post_show.html', context=context)
 
 
+@login_required(login_url='post_index', redirect_field_name='')
 def post_create(request):
-    if not request.user.is_authenticated:
-        return redirect('post_index')
-
     post = Post(created_by=request.user)
     form = PostForm(request.POST or None, request.FILES or None, instance=post)
 
@@ -80,10 +79,8 @@ def post_create(request):
     return render(request, 'views/post/post_edit.html', context=context)
 
 
+@login_required(login_url='post_index', redirect_field_name='')
 def post_edit(request, post_id):
-    if not request.user.is_authenticated:
-        return redirect('post_index')
-
     post = get_object_or_404(Post, id=post_id)
     form = PostForm(request.POST or None, request.FILES or None, instance=post)
 
@@ -126,12 +123,21 @@ def contacts(request):
     return render(request, 'views/contacts.html', context=context)
 
 
+@login_required(login_url='post_index', redirect_field_name='')
 def message_index(request):
     messages = Message.objects.all().order_by('-created_at')
 
     context = {'messages': messages}
 
-    return render(request, 'views/message_index.html', context=context)
+    return render(request, 'views/message/message_index.html', context=context)
+
+
+@login_required(login_url='post_index', redirect_field_name='')
+def message_show(request, message_id):
+    message = get_object_or_404(Message, id=message_id)
+
+    context = {"message": message}
+    return render(request, 'views/message/message_show.html', context=context)
 
 
 def paginate(request, post_list, post_per_page=4):
