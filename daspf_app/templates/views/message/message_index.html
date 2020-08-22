@@ -20,7 +20,7 @@
                     <td>{{ message.email }}</td>
                     <td>{{ message.text }}</td>
                     <td>{{ message.get_short_date }}</td>
-                    <td><a class="btn btn-outline-success" href="#">Detalli</a></td>
+                    <td><a class="btn btn-outline-success" href="{% url 'message_show' message_id=message.id %}">Detalli</a></td>
                 </tr>
             {% endfor %}
             </tbody>

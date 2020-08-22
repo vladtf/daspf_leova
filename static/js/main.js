@@ -42,6 +42,17 @@ $("#add_extra").click(function () {
 
     $("[name=form-TOTAL_FORMS]").val(++form_count);
 });
+
+
+$("textarea").each(function (textarea) {
+    $(this).height($(this)[0].scrollHeight);
+
+    $(this).on("keydown keypress change", function () {
+        $(this).height(0);
+        $(this).height(this.scrollHeight+30);
+    })
+});
+
 // $('.my-image').croppie({
 //     viewport: {
 //         width: 150,
