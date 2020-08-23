@@ -12,7 +12,7 @@
                         <h3 class="mb-0">
                             <a class="text-dark" href="{% url 'post_show' post_id=post.id %}">{{ post.title }}</a>
                         </h3>
-                        <div class="mb-1 text-muted">{{ post.get_date }}</div>
+                        <div class="mb-1 text-muted">{{ post.get_short_date }}</div>
                         <p class="card-text mb-auto"
                            style="font-size: large">{{ post.body | striptags | truncatechars:100 }}</p>
                         <a class="btn btn-outline-primary btn-link" href="{% url 'post_show' post_id=post.id %}">Citește

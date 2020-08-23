@@ -23,6 +23,11 @@
                    readonly>
         </div>
         <div class="form-group">
+            <label for="date">Trimisă la</label>
+            <input type="tel" class="form-control" id="date" placeholder="NO PHONE GIVEN" value="{{ message.created_at | date:"d.m.y H:i"}}"
+                   readonly>
+        </div>
+        <div class="form-group">
             <label for="text">Mesaj</label>
             <textarea class="form-control d-inline-block auto-grow" id="text" readonly>{{ message.text }}</textarea>
         </div>
@@ -31,6 +36,6 @@
             <textarea class="form-control d-inline-block auto-grow" id="response"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-outline-success w-100">Răspunde</button>
+        <button type="submit" class="btn btn-outline-success w-100">Răspunde </button>
     </form>
 {% endblock %}
