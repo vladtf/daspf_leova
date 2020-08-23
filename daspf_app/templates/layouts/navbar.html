@@ -1,5 +1,5 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary"
      style="border-radius: 0 0 0.25rem 0.25rem;">
     <a class="navbar-brand" href="{% url 'home' %}"><i class="fa fa-home"></i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -52,16 +52,16 @@
         <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
                 <li class="nav-item pr-2">
-                    <a class="btn btn-outline-success" href="{% url 'post_create' %}">Postare noua</a>
+                    <a class="btn btn-success" href="{% url 'post_create' %}">Postare noua</a>
                 </li>
                 <li class="nav-item pr-2">
-                    <a class="btn btn-outline-success" href="{% url 'message_index' %}">Mesaje</a>
+                    <a class="btn btn-success" href="{% url 'message_index' %}">Mesaje</a>
                 </li>
             {% endif %}
 
             <form class="form-inline my-2 my-lg-0" action="{% url 'post_index' %}">
                 <input class="form-control search-field" type="search" placeholder="Caută ..." aria-label="Search" name="search">
-                <button class="btn btn-outline-success btn-md my-2 my-sm-0 ml-lg-2 search-button" type="submit">Caută
+                <button class="btn btn-success btn-md my-2 my-sm-0 ml-lg-2 search-button" type="submit">Caută
                 </button>
             </form>
         </ul>
