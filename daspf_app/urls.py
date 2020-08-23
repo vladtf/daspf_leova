@@ -17,3 +17,4 @@ urlpatterns = [
     path('messages/', views.message_index, name='message_index'),
     path('messages/show/<int:message_id>', views.message_show, name='message_show'),
 ]
+

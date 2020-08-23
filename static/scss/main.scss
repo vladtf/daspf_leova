@@ -56,8 +56,12 @@ input[type=number]::-webkit-inner-spin-button {
   margin-top: -1px;
 }
 
+.hoverable {
+  transition: all 0.5s ease;
+}
+
 .hoverable:hover {
   border-color: $primary;
-  box-shadow: -3px 3px 10px 1px $primary !important;
+  box-shadow: -2px 2px 5px 1px $primary !important;
 }
 

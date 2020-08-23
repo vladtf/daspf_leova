@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'phonenumber_field',
     'django_social_share',
+    'captcha',
 ]
 
 MIDDLEWARE = [

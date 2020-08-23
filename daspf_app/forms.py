@@ -1,3 +1,4 @@
+from captcha.fields import CaptchaField
 from django import forms
 from phonenumber_field.formfields import PhoneNumberField
 
@@ -47,11 +48,13 @@ class MessageForm(forms.ModelForm):
         "class": "w-100"
     }))
 
-    phone = PhoneNumberField(region='MD')
+    phone = PhoneNumberField(region='MD', label='Telefon mobil')
 
     text = forms.CharField(label='Mesaj', widget=forms.Textarea(attrs={
         "class": "w-100",
     }))
+
+    captcha = CaptchaField()
 
     class Meta:
         model = Message
@@ -60,4 +63,5 @@ class MessageForm(forms.ModelForm):
             'name',
             'phone',
             'text',
+            'captcha'
         ]
