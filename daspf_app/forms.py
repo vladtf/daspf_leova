@@ -43,7 +43,6 @@ class PageDataForm(forms.Form):
 
 
 class MessageForm(forms.ModelForm):
-
     name = forms.CharField(label='Nume', widget=forms.TextInput(attrs={
         "class": "w-100"
     }))
@@ -51,7 +50,8 @@ class MessageForm(forms.ModelForm):
     phone = PhoneNumberField(region='MD', label='Telefon mobil', required=False)
 
     text = forms.CharField(label='Mesaj', max_length=500, widget=forms.Textarea(attrs={
-        "class": "w-100",
+        "class": "w-100 ",
+        "style": "min-height: 220px;"
     }))
 
     captcha = CaptchaField()

@@ -5,7 +5,15 @@
     <form action="{% url 'contacts' %}" method="post" class="border border-dark contact-form p-lg-5 m-lg-5 p-2">
         {% csrf_token %}
         <p class="h4 mb-4">FORMULAR DE CONTACT</p>
-        {{ form.as_p }}
+
+
+        {% for field in form %}
+            <div class="form-group {% if field.field.required %} required {% endif %}">
+                <label class="control-label" for="{{ field.id_for_label }}">{{ field.label }}:</label>
+                {{ field }}
+                {{ field.errors }}
+            </div>
+        {% endfor %}
 
         <button type="submit" class="btn btn-outline-success w-100">Trimite</button>
     </form>
