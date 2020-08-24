@@ -125,7 +125,8 @@ def contacts(request):
 
 @login_required(login_url='post_index', redirect_field_name='')
 def message_index(request):
-    messages = Message.objects.all().order_by('-created_at')
+    message_list = Message.objects.all().order_by('-created_at')
+    messages = paginate(request, message_list, items_per_page=17)
 
     context = {'messages': messages}
 
@@ -140,13 +141,13 @@ def message_show(request, message_id):
     return render(request, 'views/message/message_show.html', context=context)
 
 
-def paginate(request, post_list, post_per_page=4):
+def paginate(request, items_list, items_per_page=4):
     page = request.GET.get('page', 1)
-    paginator = Paginator(post_list, post_per_page)
+    paginator = Paginator(items_list, items_per_page)
     try:
-        posts = paginator.page(page)
+        items = paginator.page(page)
     except PageNotAnInteger:
-        posts = paginator.page(1)
+        items = paginator.page(1)
     except EmptyPage:
-        posts = paginator.page(paginator.num_pages)
-    return posts
+        items = paginator.page(paginator.num_pages)
+    return items

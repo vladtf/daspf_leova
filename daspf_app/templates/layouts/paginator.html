@@ -1,0 +1,42 @@
+{% load static %}
+{% if items.has_other_pages %}
+            <nav aria-label="Page navigation example" class="table-responsive">
+                <ul class="pagination py-2 col-lg-12 px-3 justify-content-center">
+                    <li class="page-item pr-1">
+                        <a class="page-link" href="?page=1">&Lang;</a>
+                    </li>
+                    {% if items.has_previous %}
+                        <li class="page-item pr-1">
+                            <a class="page-link" href="?page={{ items.previous_page_number }}">&lang;</a>
+                        </li>
+                    {% else %}
+                        <li class="disabled page-item pr-1">
+                            <span class="page-link">&lang;</span>
+                        </li>
+                    {% endif %}
+                    {% for i in items.paginator.page_range %}
+                        {% if items.number == i %}
+                            <li class="page-item active" style="padding: 0 0.15rem;">
+                                <span class="page-link">{{ i }} <span class="sr-only">(current)</span></span>
+                            </li>
+                        {% elif i > items.number|add:'-6' and i < items.number|add:'6' %}
+                            <li class="page-item" style="padding: 0 0.15rem">
+                                <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if items.has_next %}
+                        <li class="page-item pl-1">
+                            <a class="page-link" href="?page={{ items.next_page_number }}">&rang;</a>
+                        </li>
+                    {% else %}
+                        <li class="disabled page-item pl-1">
+                            <span class="page-link">&rang;</span>
+                        </li>
+                    {% endif %}
+                    <li class="page-item pl-1">
+                        <a class="page-link" href="?page={{ items.paginator.num_pages }}">&Rang;</a>
+                    </li>
+                </ul>
+            </nav>
+        {% endif %}

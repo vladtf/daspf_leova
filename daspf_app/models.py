@@ -67,7 +67,7 @@ class Message(models.Model):
 def short_date(date):
     time_delta = datetime.now(timezone.utc) - date
 
-    if time_delta.seconds < 3600:
+    if time_delta.total_seconds() < 3600:
         return str(time_delta.seconds // 60) + " minute"
 
     if time_delta.days < 1:
@@ -76,4 +76,4 @@ def short_date(date):
     if time_delta.days < 30:
         return str(time_delta.days) + " zile"
 
-    return date
+    return date.strftime("%d.%m.%Y %H:%M")

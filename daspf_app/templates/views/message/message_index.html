@@ -18,7 +18,7 @@
                 <tr>
                     <th scope="row">{{ message.id }}</th>
                     <td>{{ message.email }}</td>
-                    <td>{{ message.text }}</td>
+                    <td>{{ message.text | truncatechars:50 }}</td>
                     <td>{{ message.get_short_date }}</td>
                     <td><a class="btn btn-outline-success" href="{% url 'message_show' message_id=message.id %}">Detalli</a></td>
                 </tr>
@@ -26,4 +26,6 @@
             </tbody>
         </table>
     </div>
+
+    {% include 'layouts/paginator.html' with items=messages %}
 {% endblock %}
