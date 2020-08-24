@@ -49,10 +49,25 @@ $("textarea").each(function (textarea) {
 
     $(this).on("keydown keypress change", function () {
         $(this).height(0);
-        $(this).height(this.scrollHeight+30);
+        $(this).height(this.scrollHeight + 30);
     })
 });
 
+$('.captcha').click(function () {
+    update_captcha()
+});
+
+$('#id_captcha_1').after('<button class=\'js-captcha-refresh btn btn-outline-danger ml-2\' type="button" id="re_captcha"><i class="fas fa-undo"></i></button>')
+$('#re_captcha').click(function () {
+    update_captcha()
+})
+
+var update_captcha = function () {
+    $.getJSON("/captcha/refresh/", function (result) {
+        $('.captcha').attr('src', result['image_url']);
+        $('#id_captcha_0').val(result['key'])
+    });
+}
 // $('.my-image').croppie({
 //     viewport: {
 //         width: 150,
