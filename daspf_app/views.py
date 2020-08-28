@@ -39,8 +39,8 @@ def post_index(request):
         .filter(Q(title__icontains=search_query) | Q(body__icontains=search_query), visible=True) \
         .order_by('-created_at')
 
-    posts = paginate(request, post_list)
-    context = {'posts': posts}
+    post_list = paginate(request, post_list)
+    context = {'posts': post_list}
     return render(request, 'views/post/post_index.html', context=context)
 
 
@@ -125,10 +125,22 @@ def contacts(request):
 
 @login_required(login_url='post_index', redirect_field_name='')
 def message_index(request):
-    message_list = Message.objects.all().order_by('-created_at')
-    messages = paginate(request, message_list, items_per_page=17)
+    email = request.GET.get('email', '')
+    text = request.GET.get('text', '')
 
-    context = {'messages': messages}
+    message_list = Message.objects.order_by('-created_at')
+
+    if email or text:
+        message_list = Message.objects.filter(Q(email__icontains=email) & Q(text__icontains=text)) \
+
+    # if email:
+    #     message_list = message_list.filter(email__icontains=email)
+    # if text:
+    #     message_list = message_list.filter(text__icontains=text)
+
+    message_list = paginate(request, message_list, items_per_page=17)
+
+    context = {'messages': message_list}
 
     return render(request, 'views/message/message_index.html', context=context)
 
