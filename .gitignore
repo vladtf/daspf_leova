@@ -214,3 +214,4 @@ dmypy.json
 cython_debug/
 
 /static/assets/
+!/daspf_leova/settings_sensitive.py

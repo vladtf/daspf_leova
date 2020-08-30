@@ -12,6 +12,19 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+# Imgur settings
+from split_settings.tools import include
+
+include(
+    'settings_sensitive.py'
+)
+# config = configparser.RawConfigParser()
+# config.read('settings_sensitive.py')
+#
+# IMGUR_CLIENT_ID = config.get('IMGUR', 'CLIENT_ID')
+# IMGUR_CLIENT_SECRET = config.get('IMGUR', 'CLIENT_SECRET')
+
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -41,6 +54,8 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'django_social_share',
     'captcha',
+    'split_settings',
+    'imgurpython'
 ]
 
 MIDDLEWARE = [

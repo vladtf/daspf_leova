@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST" id="post_form" enctype="multipart/form-data">
         {% csrf_token %}
         {% for hidden in form.hidden_fields %}
             {{ hidden }}
@@ -50,5 +50,61 @@
     <script>
         document.getElementById('id_title').classList.add('w-100');
         document.getElementById('id_body').classList.add('w-100');
+    </script>
+
+    <script>
+        // First, parse the query string
+        var params = {}, queryString = location.hash.substring(1),
+            regex = /([^&=]+)=([^&]*)/g, m;
+        while (m = regex.exec(queryString)) {
+            params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+        }
+
+        console.log(params);
+
+
+        var form = document.getElementById('post_form')
+        csrftoken = form.getElementsByTagName("input")[0].value
+
+        var url = '{% url 'post_create' %}';
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify(params)
+        })
+
+        .then((response)=>response.json())
+        .then((data)=>{
+            console.log(data);
+        })
+
+/*
+
+*/
+
+/*
+        // And send the token over to the server
+        var req = new XMLHttpRequest();
+        // consider using POST so query isn't logged
+        req.open('GET', 'https://' + window.location.host + '/catchtoken?' + queryString, true);
+
+        req.onreadystatechange = function (e) {
+            if (req.readyState == 4) {
+                if (req.status == 200) {
+                    window.location = params['state']
+                } else if (req.status == 400) {
+                    alert('There was an error processing the token.')
+                } else {
+                    alert('something else other than 200 was returned')
+                }
+            }
+        {
+            ;
+
+        req.send(null); */
     </script>
 {% endblock content %}

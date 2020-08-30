@@ -1,14 +1,15 @@
-from itertools import chain
+import json
 
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.forms import modelformset_factory
 from django.shortcuts import render, redirect, get_object_or_404
+from imgurpython import ImgurClient
 
-from daspf_app.forms import PostForm, PageDataForm, PostFullForm, ImageForm, MessageForm
+from daspf_app.forms import PostForm, PageDataForm, ImageForm, MessageForm
 from daspf_app.models import Post, Category, PostImage, Message
+from daspf_leova import settings
 
 
 def home(request):
@@ -59,11 +60,23 @@ def post_show(request, post_id):
 
 @login_required(login_url='post_index', redirect_field_name='')
 def post_create(request):
+    client_id = settings.IMGUR_CLIENT_ID
+    client_secret = settings.IMGUR_CLIENT_SECRET
+
+    if request.method != 'POST':
+        client = ImgurClient(client_id=client_id, client_secret=client_secret)
+        auth_url = client.get_auth_url('token')
+        return redirect(auth_url)
+    imgur_client = get_imgur_client(request, client_id, client_secret)
+
     post = Post(created_by=request.user)
     form = PostForm(request.POST or None, request.FILES or None, instance=post)
 
     ImageFormSet = modelformset_factory(PostImage, form=ImageForm, extra=3)
     formset = ImageFormSet(request.POST or None, request.FILES or None, queryset=PostImage.objects.none())
+
+    if imgur_client:
+        imgur_client.upload_from_url(url='/images/student_faculty_view_ROeeYKg.png')
 
     if form.is_valid() and formset.is_valid():
         post = form.save()
@@ -77,6 +90,38 @@ def post_create(request):
 
     context = {'form': form, 'formset': formset}
     return render(request, 'views/post/post_edit.html', context=context)
+
+
+def get_imgur_client(request, client_id, client_secret):
+    data = json.loads(request.body)
+
+    access_token = data['access_token']
+    expires_in = data['expires_in']
+    token_type = data['token_type']
+    refresh_token = data['refresh_token']
+    account_username = data['account_username']
+    account_id = data['account_id']
+
+    if access_token and refresh_token:
+        client = ImgurClient(client_id=client_id, client_secret=client_secret, access_token=access_token,
+                             refresh_token=refresh_token)
+        return client
+
+    return {}
+
+    # driver.get(auth_url)
+    #
+    # token = request.GET.get('acces_token')
+    # client.authorize(token, 'token')
+    # client.authorize()
+    # auth_url = client.get_auth_url('token')
+    #
+    # credentials = client.authorize('TOKEN OBTAINED FROM AUTHORIZATION', 'token')
+    # client.set_user_auth(credentials['access_token'], credentials['refresh_token'])
+    # uploaded_image = client.image_upload(filename='http://127.0.0.1:8000/images/student_faculty_view_ROeeYKg.png', description="None", title="Untitled")
+    # imgur.upload_from_url(url='/images/student_faculty_view_ROeeYKg.png')
+    # image_id = uploaded_image['response']['data']['id']
+    # print(uploaded_image.link)
 
 
 @login_required(login_url='post_index', redirect_field_name='')
@@ -132,8 +177,8 @@ def message_index(request):
 
     if email or text:
         message_list = Message.objects.filter(Q(email__icontains=email) & Q(text__icontains=text)) \
-
-    # if email:
+ \
+            # if email:
     #     message_list = message_list.filter(email__icontains=email)
     # if text:
     #     message_list = message_list.filter(text__icontains=text)
