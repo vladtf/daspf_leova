@@ -60,14 +60,17 @@ def post_show(request, post_id):
 
 @login_required(login_url='post_index', redirect_field_name='')
 def post_create(request):
-    client_id = settings.IMGUR_CLIENT_ID
-    client_secret = settings.IMGUR_CLIENT_SECRET
-
-    if request.method != 'POST':
-        client = ImgurClient(client_id=client_id, client_secret=client_secret)
-        auth_url = client.get_auth_url('token')
-        return redirect(auth_url)
-    imgur_client = get_imgur_client(request, client_id, client_secret)
+    # client_id = settings.IMGUR_CLIENT_ID
+    # client_secret = settings.IMGUR_CLIENT_SECRET
+    #
+    # if request.method != 'POST':
+    #     client = ImgurClient(client_id=client_id, client_secret=client_secret)
+    #     auth_url = client.get_auth_url('token')
+    #     return redirect(auth_url)
+    # imgur_client = get_imgur_client(request, client_id, client_secret)
+    #
+    # if imgur_client:
+    #     imgur_client.upload_from_url(url='/images/student_faculty_view_ROeeYKg.png')
 
     post = Post(created_by=request.user)
     form = PostForm(request.POST or None, request.FILES or None, instance=post)
@@ -75,8 +78,7 @@ def post_create(request):
     ImageFormSet = modelformset_factory(PostImage, form=ImageForm, extra=3)
     formset = ImageFormSet(request.POST or None, request.FILES or None, queryset=PostImage.objects.none())
 
-    if imgur_client:
-        imgur_client.upload_from_url(url='/images/student_faculty_view_ROeeYKg.png')
+
 
     if form.is_valid() and formset.is_valid():
         post = form.save()

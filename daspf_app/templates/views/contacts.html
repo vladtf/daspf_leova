@@ -2,21 +2,38 @@
 {% load static %}
 
 {% block content %}
-    <form action="{% url 'contacts' %}" method="post" class="border border-dark contact-form p-lg-5 m-lg-5 p-2">
-        {% csrf_token %}
-        <p class="h4 mb-4">FORMULAR DE CONTACT</p>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <form action="{% url 'contacts' %}" method="post" class="border border-dark contact-form p-lg-5 m-lg-5 p-2">
+                {% csrf_token %}
+                <p class="h4 mb-4">FORMULAR DE CONTACT</p>
 
 
-        {% for field in form %}
-            <div class="form-group {% if field.field.required %} required {% endif %}">
-                <label class="control-label" for="{{ field.id_for_label }}">{{ field.label }}:</label>
-                {{ field }}
-                {{ field.errors }}
+                {% for field in form %}
+                    <div class="form-group {% if field.field.required %} required {% endif %}">
+                        <label class="control-label" for="{{ field.id_for_label }}">{{ field.label }}:</label>
+                        {{ field }}
+                        {{ field.errors }}
+                    </div>
+                {% endfor %}
+
+                <button type="submit" class="btn btn-outline-success w-100">Trimite</button>
+            </form>
+        </div>
+        <div class="col-lg-4">
+            <div class="border border-dark py-lg-5 px-lg-2 my-lg-5 p-2" style="font-size: large">
+                <h4>Contacte</h4>
+                <p><i class="fas fa-envelope pr-2"></i> daspf.leova@gmail.com</p>
+                <p><i class="fa fa-phone-square pr-2"></i> 0711 11 111</p>
+                <p><i class="fa pr-2">☎</i> 0263 92 2 2 - directie</p>
+                <p><i class="fa pr-2">☎</i> 0263 92 2 2 - secretariat</p>
+                <p><i class="fa pr-2">☎</i> 0263 92 2 2</p>
+                <p><i class="fa fa-map-marker pr-2"></i> Strada Independenţei 3, Leova</p>
             </div>
-        {% endfor %}
+        </div>
+    </div>
 
-        <button type="submit" class="btn btn-outline-success w-100">Trimite</button>
-    </form>
 
     <script>
         document.getElementById('{{ form.phone.id_for_label }}').classList.add('w-100')
