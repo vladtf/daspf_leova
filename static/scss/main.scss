@@ -66,6 +66,10 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .form-group.required .control-label:after {
-   content:"*";
-   color:red;
+  content: "*";
+  color: red;
+}
+
+#mapid {
+  height: 385px;
 }

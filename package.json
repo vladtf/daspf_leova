@@ -31,7 +31,6 @@
     "dev": "concurrently --kill-others \"npm run compile-scripts\" \"npm run compile-styles\"",
     "compile-scripts": "webpack",
     "compile-styles": "sass static/scss/main.scss static/assets/app.css",
-
     "build": "webpack"
   },
   "repository": {

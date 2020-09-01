@@ -68,6 +68,19 @@ var update_captcha = function () {
         $('#id_captcha_0').val(result['key'])
     });
 }
+
+var mymap = L.map('mapid').setView([46.47715, 28.249547], 16);
+
+mymap.addControl(new L.Control.Fullscreen());
+
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+}).addTo(mymap);
+
+var marker = L.marker([46.47715, 28.249547]).addTo(mymap);
+marker.bindPopup("Directia Asistenta Sociala Leova");
+
+
 // $('.my-image').croppie({
 //     viewport: {
 //         width: 150,
