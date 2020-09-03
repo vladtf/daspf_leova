@@ -68,14 +68,26 @@ var update_captcha = function () {
     });
 }
 
-var mymap = L.map('mapid').setView([46.47715, 28.249547], 16);
+if ($('#mapid').length) {
+    var mymap = L.map('mapid').setView([46.47715, 28.249547], 16);
 
-mymap.addControl(new L.Control.Fullscreen());
+    mymap.addControl(new L.Control.Fullscreen());
 
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-}).addTo(mymap);
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(mymap);
 
-var marker = L.marker([46.47715, 28.249547]).addTo(mymap);
-marker.bindPopup("Directia Asistenta Sociala Leova");
+    var marker = L.marker([46.47715, 28.249547]).addTo(mymap);
+    marker.bindPopup("Directia Asistenta Sociala Leova");
 
+}
+
+$('#hide-check').click(function () {
+    if ($(this).is(':checked')) {
+        console.log('hide');
+        $('#edit-form').hide(400);
+    } else {
+       console.log('show');
+       $('#edit-form').show(400);
+    }
+});
