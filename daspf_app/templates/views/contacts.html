@@ -4,7 +4,7 @@
 {% block content %}
 
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-xl-12 col-xxl-8">
             <form action="{% url 'contacts' %}" method="post" class="border border-dark contact-form p-lg-5 m-lg-5 p-2">
                 {% csrf_token %}
                 <p class="h4 mb-4">FORMULAR DE CONTACT</p>
@@ -21,9 +21,9 @@
                 <button type="submit" class="btn btn-outline-success w-100">Trimite</button>
             </form>
         </div>
-        <div class="col-lg-4">
-            <div class="border border-dark py-lg-5 px-lg-2 my-lg-5 p-2 mt-2" style="font-size: large">
-                <h4>Contacte</h4>
+        <div class="col-xl-12 col-xxl-4">
+            <div class="border border-dark p-lg-5 m-lg-5 p-2 mt-2 px-xxl-1 mx-xxl-1" style="font-size: large">
+                <p class="h4 mb-4">Contacte</p>
                 <p><i class="fas fa-envelope pr-2"></i> daspf.leova@gmail.com</p>
                 <p><i class="fa fa-phone-square pr-2"></i> 0711 11 111</p>
                 <p><i class="fa pr-2">☎</i> 0263 92 2 2 - directie</p>
