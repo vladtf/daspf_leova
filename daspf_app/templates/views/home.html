@@ -4,8 +4,8 @@
 {% block content %}
     {% if user.is_authenticated %}
         <div class="form-check ml-2">
-            <input type="checkbox" class="form-check-input" id="hide-check" onclick="">
-            <label class="form-check-label" for="hide-check">Ascunde editare</label>
+            <input type="checkbox" class="form-check-input" id="hide-editor-check" onclick="">
+            <label class="form-check-label" for="hide-editor-check">Ascunde editare</label>
         </div>
         <form action="." method="POST" class="my-2" enctype="multipart/form-data" id="edit-form">
             {% csrf_token %}

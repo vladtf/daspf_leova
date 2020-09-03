@@ -1,20 +1,24 @@
 {% load static %}
 <header>
-    {#    <a href="{% url 'index' %}">#}
-    <div class="header-top" onclick="location.href='{% url 'post_index' %}';" style="cursor: pointer">
-        <div class="header-text">
-            <p>
-                DIRECȚIA ASISTENȚĂ SOCIALĂ ȘI PROTECȚIE A FAMILIEI LEOVA
-            </p>
-        </div>
-        {#        <img class="header-image" src="{% static 'images/family-daspf.jpg' %}" alt="">#}
-        <img class="header-logo" src="{% static 'images/leova-logo.png' %}" alt="">
+    <div class="header-top">
 
-        {#            <div class="header-image" style="background: url('{% static 'images/leova.jpg' %}') no-repeat" alt="">#}
-        {#            </div>#}
-        {#            <img class="header-image" src="{% static 'images/leova.jpg' %}" alt="">#}
+        {% if user.is_authenticated %}
+            <div class="form-check ml-2">
+                <input type="checkbox" class="form-check-input" id="hide-check" onclick="">
+                <label class="form-check-label" for="hide-admin-check">Ascunde butoane admin</label>
+            </div>
+        {% endif %}
+
+        <div onclick="location.href='{% url 'post_index' %}';" style="cursor: pointer">
+            <div class="header-text">
+                <p>
+                    DIRECȚIA ASISTENȚĂ SOCIALĂ ȘI PROTECȚIE A FAMILIEI LEOVA
+                </p>
+            </div>
+
+            <img class="header-logo" src="{% static 'images/leova-logo.png' %}" alt="">
+        </div>
     </div>
-    {#    </a>#}
 
     <div class="header-bottom">
         {# Navbar #}

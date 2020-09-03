@@ -52,10 +52,10 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
-                <li class="nav-item pr-2 py-xl-0 py-2">
+                <li class="nav-item pr-2 py-xl-0 py-2 admin-control">
                     <a class="btn btn-success" href="{% url 'post_create' %}">Postare noua</a>
                 </li>
-                <li class="nav-item pr-2 py-xl-0 py-2">
+                <li class="nav-item pr-2 py-xl-0 py-2 admin-control">
                     <a class="btn btn-success" href="{% url 'message_index' %}">Mesaje</a>
                 </li>
             {% endif %}

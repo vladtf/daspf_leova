@@ -82,12 +82,20 @@ if ($('#mapid').length) {
 
 }
 
-$('#hide-check').click(function () {
-    if ($(this).is(':checked')) {
-        console.log('hide');
-        $('#edit-form').hide(400);
-    } else {
-       console.log('show');
-       $('#edit-form').show(400);
-    }
+$('#hide-editor-check').click(function () {
+    hideOnCheck($(this), '#edit-form');
 });
+
+$('#hide-check').click(function () {
+    hideOnCheck($(this), '.admin-control');
+});
+
+function hideOnCheck(checkbox, element) {
+    if ($(checkbox).is(':checked')) {
+        console.log('hide');
+        $(element).hide(400);
+    } else {
+        console.log('show');
+        $(element).show(400);
+    }
+}
