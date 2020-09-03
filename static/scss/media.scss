@@ -1,4 +1,3 @@
-
 @media (max-width: 992px) {
   #main {
     max-width: 100%;
@@ -25,15 +24,15 @@
   }
 }
 
-@media (min-width: 1600px) {
-  #main{
-    max-width: 1560px;
+@media (min-width: 1200px) {
+  #main {
+    max-width: 1150px;
   }
 }
 
-@media (min-width: 1200px) {
-  #main{
-    max-width: 1150px;
+@media (min-width: 1600px) {
+  #main {
+    max-width: 1560px;
   }
 }
 

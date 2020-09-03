@@ -8,7 +8,7 @@ import 'popper.js';
 import './fit-text'
 
 
-if (document.getElementById('id_body') !== null) {
+if ($("#id_body").length) {
     CKEDITOR.replace('id_body', {
         extraPlugins: ['autogrow', 'indentlist', 'image2'],
     });
@@ -83,19 +83,38 @@ if ($('#mapid').length) {
 }
 
 $('#hide-editor-check').click(function () {
-    hideOnCheck($(this), '#edit-form');
+    $('#edit-form').toggle(400)
 });
 
 $('#hide-check').click(function () {
-    hideOnCheck($(this), '.admin-control');
+    $('.admin-control').toggle(400)
 });
 
-function hideOnCheck(checkbox, element) {
-    if ($(checkbox).is(':checked')) {
-        console.log('hide');
-        $(element).hide(400);
-    } else {
-        console.log('show');
-        $(element).show(400);
-    }
+$("#scroll-top").click(function () {
+    $("html, body").stop().animate({scrollTop: 0}, 500, 'linear');
+    return false;
+});
+
+function showScrollButton() {
+    var button = $('#scroll-top');
+    var timeoutKey = -1;
+    var view = $(window);
+
+    $(document).scroll(function () {
+        if (timeoutKey) {
+            window.clearTimeout(timeoutKey);
+        }
+
+        timeoutKey = window.setTimeout(function () {
+            if (view.scrollTop() < 50) {
+                button.fadeOut();
+            } else {
+                button.fadeIn();
+            }
+        }, 100);
+    });
 }
+
+$(function () {
+    showScrollButton();
+});
