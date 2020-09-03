@@ -1,5 +1,5 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary"
+<nav class="navbar navbar-expand-xl navbar-dark bg-primary"
      style="border-radius: 0 0 0.25rem 0.25rem;">
     <a class="navbar-brand" href="{% url 'home' %}"><i class="fa fa-home"></i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -43,7 +43,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'contacts' %}">Parteneri</a>
+                <a class="nav-link" href="{% url 'events' %}">Parteneri</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'contacts' %}">Contacte</a>
@@ -52,10 +52,10 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
-                <li class="nav-item pr-2">
+                <li class="nav-item pr-2 py-xl-0 py-2">
                     <a class="btn btn-success" href="{% url 'post_create' %}">Postare noua</a>
                 </li>
-                <li class="nav-item pr-2">
+                <li class="nav-item pr-2 py-xl-0 py-2">
                     <a class="btn btn-success" href="{% url 'message_index' %}">Mesaje</a>
                 </li>
             {% endif %}

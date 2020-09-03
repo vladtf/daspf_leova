@@ -25,7 +25,6 @@ $('.carousel').on('slide.bs.carousel', function (event) {
 
 $('.sidebar-card-text').fitText();
 
-
 let form_count = Number($("[name=form-TOTAL_FORMS]").val());
 
 $("#add_extra").click(function () {
@@ -80,14 +79,3 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 var marker = L.marker([46.47715, 28.249547]).addTo(mymap);
 marker.bindPopup("Directia Asistenta Sociala Leova");
 
-
-// $('.my-image').croppie({
-//     viewport: {
-//         width: 150,
-//         height: 150
-//     },
-//     boundary: {
-//         width: 300,
-//         height: 300,
-//     }
-// });
