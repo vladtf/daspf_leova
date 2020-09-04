@@ -2,7 +2,7 @@ from captcha.fields import CaptchaField
 from django import forms
 from phonenumber_field.formfields import PhoneNumberField
 
-from daspf_app.models import Post, PostImage, Message
+from daspf_app.models import Post, PostImage, Message, Category
 
 
 class PostForm(forms.ModelForm):
@@ -14,6 +14,10 @@ class PostForm(forms.ModelForm):
             'category',
             'image',
         ]
+
+    def __init__(self, request, *args, **kwargs):
+        super(PostForm, self).__init__(*args, **kwargs)
+        self.fields['category'].queryset = Category.objects.filter(name__in=['Noutăți', 'Evenimente'])
 
 
 class ImageForm(forms.ModelForm):
