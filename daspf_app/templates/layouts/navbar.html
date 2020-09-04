@@ -11,13 +11,13 @@
         <ul class="navbar-nav mr-auto">
 
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" href=""{% url 'post_index' %}""
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" href="{% url 'post_index' %}"
                    aria-haspopup="true" aria-expanded="false">Noutăți</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{% url 'events' %}">Evenimente</a>
-                    <a class="dropdown-item" href="#">Anunțuri</a>
-                    <a class="dropdown-item" href="#">Posturi vacante</a>
-                    <a class="dropdown-item" href="{% url 'post_index' %}">Ultimele postări</a>
+                    <a class="dropdown-item" href="{% url 'post_index_category' category='Evenimente' %}">Evenimente</a>
+                    <a class="dropdown-item" href="{% url 'post_index_category' category='Anunțuri' %}">Anunțuri</a>
+                    <a class="dropdown-item" href="{% url 'post_index_category' category='Posturi vacante'%}">Posturi vacante</a>
+                    <a class="dropdown-item" href="{% url 'post_index'%}">Ultimele postări</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -43,7 +43,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'events' %}">Parteneri</a>
+                <a class="nav-link" href="{% url 'home' %}">Parteneri</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'contacts' %}">Contacte</a>

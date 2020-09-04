@@ -15,7 +15,7 @@
                         <div class="mb-1 text-muted">{{ post.get_short_date }}</div>
                         <p class="card-text mb-auto"
                            style="font-size: large">{{ post.body | striptags | truncatechars:100 }}</p>
-                        <a class="btn btn-outline-primary btn-link" href="{% url 'post_show' post_id=post.id %}">Citește
+                        <a class="btn btn-outline-primary" href="{% url 'post_show' post_id=post.id %}">Citește
                             mai departe</a>
                     </div>
                     <img class="card-img-top flex-auto d-none d-md-block"
