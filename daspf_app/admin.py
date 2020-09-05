@@ -22,3 +22,4 @@ class PostImageAdmin(admin.ModelAdmin):
 
 admin.site.register(Category)
 admin.site.register(Message)
+admin.site.register(Page)

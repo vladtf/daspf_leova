@@ -8,29 +8,27 @@ from django.shortcuts import render, redirect, get_object_or_404
 from imgurpython import ImgurClient
 
 from daspf_app.forms import PostForm, PageDataForm, ImageForm, MessageForm
-from daspf_app.models import Post, Category, PostImage, Message
+from daspf_app.models import *
 from daspf_leova import settings
 
 
-def home(request):
+def page(request, name='acasa'):
     form = {}
-    home = Post.objects.get(category=Category.objects.get(name='Acasa'))
+    page = Page.objects.get(name=name)
 
     if request.user.is_authenticated:
         form = PageDataForm(request.POST or None, request.FILES or None, initial={
-            'title': home.title,
-            'body': home.body,
+            'body': page.body,
         })
 
         if form.is_valid():
-            home.body = form.cleaned_data['body']
-            home.title = form.cleaned_data['title']
-            home.created_by = request.user
+            page.body = form.cleaned_data['body']
+            page.created_by = request.user
 
-            home.save()
+            page.save()
 
-    context = {'form': form, 'home': home}
-    return render(request, 'views/home.html', context=context)
+    context = {'form': form, 'page': page}
+    return render(request, 'views/index.html', context=context)
 
 
 def post_index(request, category=''):
@@ -139,15 +137,6 @@ def post_edit(request, post_id):
 
     context = {'form': form, 'formset': formset}
     return render(request, 'views/post/post_edit.html', context=context)
-
-
-def events(request):
-    post_list = Post.objects.all().filter(category=Category.objects.get(name='Evenimente'), visible=True).order_by(
-        '-created_at')
-
-    posts = paginate(request, post_list)
-    context = {'posts': posts}
-    return render(request, 'views/post/post_index.html', context=context)
 
 
 def contacts(request):

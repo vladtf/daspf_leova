@@ -1,7 +1,7 @@
 {% load static %}
 <nav class="navbar navbar-expand-xl navbar-dark bg-primary"
      style="border-radius: 0 0 0.25rem 0.25rem;">
-    <a class="navbar-brand" href="{% url 'home' %}"><i class="fa fa-home"></i></a>
+    <a class="navbar-brand" href="{% url 'index' name='acasa' %}"><i class="fa fa-home"></i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -22,9 +22,10 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" href="#"
-                   aria-haspopup="true" aria-expanded="false">Acte legislative şi normative</a>
+                   aria-haspopup="true" aria-expanded="false">Documente</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Regulamente</a>
+                    <a class="dropdown-item" href="{% url 'index' name='organigrama' %}">Organigramă</a>
+                    <a class="dropdown-item" href="{% url 'index' name='regulamente' %}">Regulamente</a>
                     <a class="dropdown-item" href="#">Hotărîri și legi</a>
                     <a class="dropdown-item" href="#">Dispoziții</a>
                     <a class="dropdown-item" href="#">Legislație generală</a>
@@ -43,7 +44,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">Parteneri</a>
+                <a class="nav-link" href="{% url 'contacts' %}">Parteneri</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'contacts' %}">Contacte</a>
