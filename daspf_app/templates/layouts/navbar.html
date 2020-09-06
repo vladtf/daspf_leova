@@ -26,25 +26,34 @@
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="{% url 'index' name='organigrama' %}">Organigramă</a>
                     <a class="dropdown-item" href="{% url 'index' name='regulamente' %}">Regulamente</a>
-                    <a class="dropdown-item" href="#">Hotărîri și legi</a>
-                    <a class="dropdown-item" href="#">Dispoziții</a>
-                    <a class="dropdown-item" href="#">Legislație generală</a>
+                    <a class="dropdown-item" href="{% url 'index' name='hotarari' %}">Hotărîri și legi</a>
+                    <a class="dropdown-item" href="{% url 'index' name='dispozitii' %}">Dispoziții</a>
+                    <a class="dropdown-item" href="{% url 'index' name='legislatie' %}">Legislație generală</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" href="#"
                    aria-haspopup="true" aria-expanded="false">Informații utile</a>
                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Strategii</a>
-                    <a class="dropdown-item" href="#">Planuri de activitate</a>
-                    <a class="dropdown-item" href="#">Rapoarte</a>
-                    <a class="dropdown-item" href="#">Acte necesare</a>
-                    <a class="dropdown-item" href="#">Formulare de cereri</a>
-                    <a class="dropdown-item" href="#">Alte documente</a>
+                    <a class="dropdown-item" href="{% url 'index' name='ajutor_social' %}">Ajutor social</a>
+                    <a class="dropdown-item" href="{% url 'index' name='strategii' %}">Strategii</a>
+                    <a class="dropdown-item" href="{% url 'index' name='planuri' %}">Planuri de activitate</a>
+                    <a class="dropdown-item" href="{% url 'index' name='rapoarte' %}">Rapoarte</a>
+                    <a class="dropdown-item" href="{% url 'index' name='acte_necesare' %}">Acte necesare</a>
+                    <a class="dropdown-item" href="{% url 'index' name='cereri' %}">Formulare de cereri</a>
+                    <a class="dropdown-item" href="{% url 'index' name='alte_documente' %}">Alte documente</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" href="#"
+                   aria-haspopup="true" aria-expanded="false">Prestații</a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{% url 'index' name='ajutor_social' %}">Ajutor social</a>
+                    <a class="dropdown-item" href="{% url 'index' name='compensatie_transport' %}">Compensaţie pentru <br> serviciile de transport</a>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'contacts' %}">Parteneri</a>
+                <a class="nav-link" href="{% url 'index' name='parteneri' %}">Parteneri</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'contacts' %}">Contacte</a>

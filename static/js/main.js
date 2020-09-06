@@ -1,5 +1,3 @@
-window.jQuery = window.$ = require('jquery');
-
 require("jquery-ui/ui/widgets/dialog");
 
 import '../scss/main.scss';

@@ -9,23 +9,23 @@
         {% endfor %}
 
         <div class="row">
+
             <div class="col-md-12 py-2 form-group">
-                <label for="id_title">Titlu: </label>
+                <label for="{{ form.title.auto_id }}">Titlu: </label>
                 {{ form.title }}
             </div>
             <div class="col-md-12 py-2 form-group">
-                <label for="id_body">Conținut postare: </label>
+                <label for="{{ form.body.auto_id }}">Conținut postare: </label>
                 {{ form.body }}
             </div>
             <div class="col-md-12 py-2 form-group">
-                <label for="id_category">Categorie: </label>
+                <label for="{{ form.category.auto_id }}">Categorie: </label>
                 {{ form.category }}
             </div>
             <div class="col-md-12 pt-2 pb-4 form-group">
-                <label for="id_image">Imagine: </label>
+                <label for="{{ form.image.auto_id }}">Imagine: </label>
                 {{ form.image }}
             </div>
-
 
             {{ formset.management_form }}
 
@@ -40,12 +40,21 @@
             </div>
 
             <div class="col-md-12 py-2 form-group">
+                <label for="{{ form.visible.auto_id }}">Visibil: </label>
+                {{ form.visible }}
+            </div>
+
+            <div class="col-md-12 py-2 form-group">
                 <input class="btn btn-outline-success" type="submit" value="Save">
+                <input class="btn btn-outline-danger" type="button" value="Delete" id="btnDelete">
             </div>
         </div>
 
     </form>
 
+    <div id="dialog" title="Dialog title" style="display: none">
+        <p>Dialog text</p>
+    </div>
 
     <script>
         document.getElementById('id_title').classList.add('w-100');
@@ -53,21 +62,21 @@
     </script>
 
     <script>
-    /*
-        // First, parse the query string
-        var params = {}, queryString = location.hash.substring(1),
-            regex = /([^&=]+)=([^&]*)/g, m;
-        while (m = regex.exec(queryString)) {
-            params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
-        }
+        /*
+            // First, parse the query string
+            var params = {}, queryString = location.hash.substring(1),
+                regex = /([^&=]+)=([^&]*)/g, m;
+            while (m = regex.exec(queryString)) {
+                params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+            }
 
-        console.log(params);
+            console.log(params);
 
 
-        var form = document.getElementById('post_form')
-        csrftoken = form.getElementsByTagName("input")[0].value
+            var form = document.getElementById('post_form')
+            csrftoken = form.getElementsByTagName("input")[0].value
 
-        var url = '{% url 'post_create' %}';
+            var url = '{% url 'post_create' %}';
 
         fetch(url, {
             method: 'POST',
@@ -84,29 +93,29 @@
         })
 */
 
-/*
+        /*
 
-*/
+        */
 
-/*
-        // And send the token over to the server
-        var req = new XMLHttpRequest();
-        // consider using POST so query isn't logged
-        req.open('GET', 'https://' + window.location.host + '/catchtoken?' + queryString, true);
+        /*
+                // And send the token over to the server
+                var req = new XMLHttpRequest();
+                // consider using POST so query isn't logged
+                req.open('GET', 'https://' + window.location.host + '/catchtoken?' + queryString, true);
 
-        req.onreadystatechange = function (e) {
-            if (req.readyState == 4) {
-                if (req.status == 200) {
-                    window.location = params['state']
-                } else if (req.status == 400) {
-                    alert('There was an error processing the token.')
-                } else {
-                    alert('something else other than 200 was returned')
-                }
-            }
-        {
-            ;
+                req.onreadystatechange = function (e) {
+                    if (req.readyState == 4) {
+                        if (req.status == 200) {
+                            window.location = params['state']
+                        } else if (req.status == 400) {
+                            alert('There was an error processing the token.')
+                        } else {
+                            alert('something else other than 200 was returned')
+                        }
+                    }
+                {
+                    ;
 
-        req.send(null); */
+                req.send(null); */
     </script>
 {% endblock content %}

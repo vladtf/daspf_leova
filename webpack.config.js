@@ -50,11 +50,10 @@ module.exports = {
             path: path.resolve(__dirname, 'static/assets'),
             filename: 'app.css'
         }),
-        // new webpack.ProvidePlugin({
-        //     $: "jquery",
-        //     jQuery: "jquery",
-        //     "window.jQuery": "jquery'",
-        //     "window.$": "jquery"
-        // }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
+        })
     ]
-};
+}
+;

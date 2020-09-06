@@ -9,16 +9,17 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = [
+            'visible',
             'title',
             'body',
             'category',
-            'image',
+            'image'
         ]
 
-    def __init__(self, *args, **kwargs):
-        super(PostForm, self).__init__(*args, **kwargs)
-        self.fields['category'].queryset = Category.objects.filter(
-            name__in=['Noutăți', 'Evenimente', 'Posturi vacante', 'Anunțuri'])
+    # def __init__(self, *args, **kwargs):
+    #     super(PostForm, self).__init__(*args, **kwargs)
+    #     self.fields['category'].queryset = Category.objects.filter(
+    #         name__in=['Noutăți', 'Evenimente', 'Posturi vacante', 'Anunțuri'])
 
 
 class ImageForm(forms.ModelForm):
