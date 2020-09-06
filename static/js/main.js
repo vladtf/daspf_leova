@@ -91,18 +91,6 @@ function setMapWidget() {
     }
 }
 
-$('#hide-editor-check').click(function () {
-    $('#edit-form').toggle(400)
-});
-
-$('#hide-check').click(function () {
-    $('.admin-control').toggle(400)
-});
-
-$("#scroll-top").click(function () {
-    $("html, body").stop().animate({scrollTop: 0}, 500, 'linear');
-    return false;
-});
 
 function showScrollButton() {
     var button = $('#scroll-top');
@@ -124,15 +112,45 @@ function showScrollButton() {
     });
 }
 
+function findActiveLinks() {
+    var path = window.location.pathname
+    $("a.nav-link[href='" + path + "']").addClass('active');
+}
 
-$(function () {
+function sidebarCardFitText() {
     $('.sidebar-card-text').fitText();
+}
 
+function scrollToTop() {
+    $("#scroll-top").click(function () {
+        $("html, body").stop().animate({scrollTop: 0}, 500, 'linear');
+        return false;
+    });
+}
+
+function hideAdminButtons() {
+    $('#hide-editor-check').click(function () {
+        $('#edit-form').toggle(400)
+    });
+
+    $('#hide-check').click(function () {
+        $('.admin-control').toggle(400)
+    });
+}
+
+function openDeleteDialog() {
     $('#btnDelete').click(function () {
         $('#dialog').dialog();
         return false;
     });
+}
 
+$(function () {
+
+    openDeleteDialog();
+    hideAdminButtons();
+    scrollToTop();
+    sidebarCardFitText();
     showScrollButton();
     updateTextAreaHeight();
     setupCKEditor();
@@ -140,4 +158,6 @@ $(function () {
     addExtraImagesField();
     configCaptcha();
     setMapWidget();
+    findActiveLinks();
+
 });

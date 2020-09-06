@@ -1,10 +1,11 @@
-/* Npm packages */
-@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "custom_bootstrap";
 
+/* Npm packages */
 @import "../../node_modules/jquery-ui/themes/base/all.css";
 
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
 /* Custom */
-@import "custom";
 @import "media";
 @import "header";
 @import "social";
