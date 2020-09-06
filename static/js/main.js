@@ -1,5 +1,7 @@
 window.jQuery = window.$ = require('jquery');
 
+require("jquery-ui/ui/widgets/dialog");
+
 import '../scss/main.scss';
 
 import 'bootstrap';
@@ -124,8 +126,14 @@ function showScrollButton() {
     });
 }
 
+
 $(function () {
     $('.sidebar-card-text').fitText();
+
+    $('#btnDelete').click(function () {
+        $('#dialog').dialog();
+        return false;
+    });
 
     showScrollButton();
     updateTextAreaHeight();
