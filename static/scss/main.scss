@@ -1,5 +1,10 @@
-@import "custom";
+/* Npm packages */
 @import "../../node_modules/bootstrap/scss/bootstrap";
+
+@import "../../node_modules/jquery-ui/themes/base/all.css";
+
+/* Custom */
+@import "custom";
 @import "media";
 @import "header";
 @import "social";
@@ -74,15 +79,15 @@ input[type=number]::-webkit-inner-spin-button {
   height: 385px;
 }
 
-.navbar-dark .navbar-nav .nav-link{
+.navbar-dark .navbar-nav .nav-link {
   color: rgba(255, 255, 255, 0.84);
 }
 
-#hide-check:checked{
+#hide-check:checked {
   background-color: red;
 }
 
-.scroll-top{
+.scroll-top {
   display: none;
   position: fixed;
   bottom: 20px;

@@ -1,4 +1,4 @@
-require("jquery-ui/ui/widgets/dialog");
+const dialog = require('jquery-ui/dialog');
 
 import '../scss/main.scss';
 

@@ -1,6 +1,6 @@
-const path = require('path')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const webpack = require('webpack')
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
 
 module.exports = {
     mode: 'development',
@@ -10,6 +10,12 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'static/assets'),
         filename: 'app.js'
+    },
+    resolve: {
+        alias: {
+            'jquery-ui': 'jquery-ui/ui/widgets',
+            'jquery-ui-css': 'jquery-ui/../../themes/base'
+        }
     },
 
     module: {
