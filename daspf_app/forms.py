@@ -71,7 +71,7 @@ class MessageForm(forms.ModelForm):
 
 
 class MessageRespondForm(forms.ModelForm):
-    response = forms.CharField(label='Răspuns', max_length=500, widget=forms.Textarea(attrs={
+    response = forms.CharField(label='Răspuns',required=False, max_length=500, widget=forms.Textarea(attrs={
         "class": "form-control d-inline-block auto-grow",
         "style": "min-height: 220px;"
     }))

@@ -1,7 +1,6 @@
-from datetime import datetime, timezone
-
 from django.contrib.auth.models import User
 from django.db import models
+from django.utils import timezone
 from phonenumber_field.modelfields import PhoneNumberField
 
 from daspf_app.enums import MessageStatus
@@ -91,7 +90,7 @@ class Message(models.Model):
 
 
 def short_date(date):
-    time_delta = datetime.now(timezone.utc) - date
+    time_delta = timezone.now() - date
 
     if time_delta.total_seconds() < 3600:
         return str(time_delta.seconds // 60) + " minute"
