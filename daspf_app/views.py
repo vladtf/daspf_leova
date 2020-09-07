@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
-from daspf_app.forms import PostForm, PageDataForm, ImageForm, MessageForm
+from daspf_app.forms import PostForm, PageDataForm, ImageForm, MessageForm, MessageRespondForm
 from daspf_app.models import *
 
 
@@ -208,7 +208,17 @@ def message_index(request):
 def message_show(request, message_id):
     message = get_object_or_404(Message, id=message_id)
 
-    context = {"message": message}
+    if message.status == MessageStatus.NEW:
+        message.status = MessageStatus.SEEN
+        message.save()
+
+    form = MessageRespondForm(request.POST or None, request.FILES or None, instance=message)
+
+    if form.is_valid():
+        form.save()
+        return redirect('message_index')
+
+    context = {"message": message, "form": form}
     return render(request, 'views/message/message_show.html', context=context)
 
 

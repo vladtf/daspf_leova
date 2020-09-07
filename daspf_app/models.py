@@ -63,6 +63,7 @@ class Message(models.Model):
     phone = PhoneNumberField(null=True)
     name = models.CharField(null=False, max_length=50)
     text = models.CharField(null=False, max_length=500)
+    response = models.CharField(null=True, max_length=500)
 
     status = models.CharField(max_length=1, choices=MessageStatus.choices, default=MessageStatus.NEW)
 
@@ -72,6 +73,10 @@ class Message(models.Model):
     def __str__(self):
         return self.email + ' - ' + str(self.created_at)
 
+    # def save(self, *args, **kwargs):
+    #     self.updated_at = datetime.now(timezone.utc)
+    #     return super(Message, self).save(*args, **kwargs)
+
     @property
     def get_status(self):
         return MessageStatus(self.status).label
@@ -79,6 +84,10 @@ class Message(models.Model):
     @property
     def get_short_date(self):
         return short_date(self.created_at)
+
+    @property
+    def get_update_date(self):
+        return self.updated_at.astimezone(tz=None).strftime("%d.%m.%Y %H:%M")
 
 
 def short_date(date):

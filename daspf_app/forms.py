@@ -68,3 +68,17 @@ class MessageForm(forms.ModelForm):
             'text',
             'captcha'
         ]
+
+
+class MessageRespondForm(forms.ModelForm):
+    response = forms.CharField(label='Răspuns', max_length=500, widget=forms.Textarea(attrs={
+        "class": "form-control d-inline-block auto-grow",
+        "style": "min-height: 220px;"
+    }))
+
+    class Meta:
+        model = Message
+        fields = [
+            'response',
+            'status'
+        ]

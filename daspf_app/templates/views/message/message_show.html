@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+    <a class="btn btn-outline-primary" href="{% url 'message_index' %}"><i class="fa fa-arrow-left pr-2"></i> Înapoi</a>
     <form action="{% url 'message_show' message_id=message.id %}" method="post"
           class="border border-dark contact-form p-lg-5 m-lg-5 p-2">
         {% csrf_token %}
@@ -24,7 +25,8 @@
         </div>
         <div class="form-group">
             <label for="date">Trimisă la</label>
-            <input type="tel" class="form-control" id="date" placeholder="NO PHONE GIVEN" value="{{ message.created_at | date:"d.m.y H:i"}}"
+            <input type="tel" class="form-control" id="date" placeholder="NO PHONE GIVEN"
+                   value="{{ message.created_at | date:"d.m.y H:i" }}"
                    readonly>
         </div>
         <div class="form-group">
@@ -32,10 +34,20 @@
             <textarea class="form-control d-inline-block auto-grow" id="text" readonly>{{ message.text }}</textarea>
         </div>
         <div class="form-group">
-            <label for="response">Răspuns</label>
-            <textarea class="form-control d-inline-block auto-grow" id="response"></textarea>
+            <label for="{{ form.response.auto_id }}">Răspuns</label>
+            {{ form.response }}
         </div>
 
-        <button type="submit" class="btn btn-outline-success w-100">Răspunde</button>
+        <div class="form-group">
+            <label for="{{ form.status.auto_id }}">Status</label>
+            {{ form.status }}
+        </div>
+        <div class="form-group">
+            <label for="updated_at">Ultima modificare:</label>
+            <input type="text" class="form-control" id="updated_at" placeholder="NO DATE GIVEN" value="{{ message.get_update_date }}"
+                   readonly>
+        </div>
+
+        <button type="submit" class="btn btn-outline-success w-100">Modifică status</button>
     </form>
 {% endblock %}
