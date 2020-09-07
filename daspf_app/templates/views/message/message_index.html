@@ -17,6 +17,7 @@
                 <th>E mail</th>
                 <th>Text</th>
                 <th>Data</th>
+                <th>Status</th>
                 <th>Detalii</th>
             </tr>
             </thead>
@@ -27,6 +28,7 @@
                     <td>{{ message.email }}</td>
                     <td>{{ message.text | truncatechars:50 }}</td>
                     <td>{{ message.get_short_date }}</td>
+                    <td>{{ message.get_status }}</td>
                     <td><a class="btn btn-outline-success"
                            href="{% url 'message_show' message_id=message.id %}">Detalli</a></td>
                 </tr>

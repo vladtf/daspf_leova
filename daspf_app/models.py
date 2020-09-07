@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
+from daspf_app.enums import MessageStatus
+
 
 class Page(models.Model):
     name = models.CharField(max_length=200, null=False)
@@ -62,10 +64,17 @@ class Message(models.Model):
     name = models.CharField(null=False, max_length=50)
     text = models.CharField(null=False, max_length=500)
 
+    status = models.CharField(max_length=1, choices=MessageStatus.choices, default=MessageStatus.NEW)
+
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.email + ' - ' + str(self.created_at)
+
+    @property
+    def get_status(self):
+        return MessageStatus(self.status).label
 
     @property
     def get_short_date(self):
