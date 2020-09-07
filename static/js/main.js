@@ -197,8 +197,30 @@ function openDeleteDialog() {
     });
 }
 
+function fitOverflowedImage() {
+    $(window).on('load resize', function () {
+        $('.index-view').find('img').each(function () {
+            var imageWidth = $(this).width();
+            var parentWidth = $(this).parent().width();
+
+            console.log("Image width: " + imageWidth);
+            console.log("Parent width: " + parentWidth);
+
+            if (imageWidth > parentWidth) {
+                $(this).css({
+                    "height": "100%",
+                    "width": "100%",
+                    "object-fit": "contain"
+                });
+            }
+        });
+    });
+}
+
+
 $(function () {
 
+    fitOverflowedImage();
     openDeleteDialog();
     hideAdminButtons();
     scrollToTop();

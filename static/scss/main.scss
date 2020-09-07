@@ -9,7 +9,7 @@
 @import "media";
 @import "header";
 @import "social";
-@import "right-sidebar";
+@import "sidebar";
 
 body {
   margin: 0;
@@ -96,3 +96,11 @@ input[type=number]::-webkit-inner-spin-button {
   z-index: 100;
   font-size: 20px;
 }
+
+/*
+.index-view img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+ */
