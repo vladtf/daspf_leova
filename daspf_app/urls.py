@@ -8,6 +8,7 @@ urlpatterns = [
     path('postare/<int:post_id>', views.post_show, name='post_show'),
     path('postare/<int:post_id>/edit', views.post_edit, name='post_edit'),
     path('postare/create', views.post_create, name='post_create'),
+    path('postare/delete', views.post_delete, name='post_delete'),
 
     path('index/<str:name>', views.page, name='index'),
     path('index/', views.page),

@@ -4,12 +4,12 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.forms import modelformset_factory
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from imgurpython import ImgurClient
+from django.urls import reverse
 
 from daspf_app.forms import PostForm, PageDataForm, ImageForm, MessageForm
 from daspf_app.models import *
-from daspf_leova import settings
 
 
 def page(request, name='acasa'):
@@ -137,6 +137,30 @@ def post_edit(request, post_id):
 
     context = {'form': form, 'formset': formset}
     return render(request, 'views/post/post_edit.html', context=context)
+
+
+@login_required(login_url='post_index', redirect_field_name='')
+def post_delete(request):
+    data = json.loads(request.body)
+
+    post_id = data.get('post_id')
+    action = data.get('action')
+
+    message = 'Unknown action'
+    redirect = reverse('post_index')
+
+    if action == 'edit':
+        Post.objects.get(id=post_id).delete()
+        message = 'Post deleted successfully!'
+
+    if action == 'create':
+        message = 'Post create abandoned'
+        redirect = reverse('post_create')
+
+    return HttpResponse(json.dumps({
+        "message": message,
+        "redirect": redirect
+    }), content_type="application/json")
 
 
 def contacts(request):

@@ -140,7 +140,59 @@ function hideAdminButtons() {
 
 function openDeleteDialog() {
     $('#btnDelete').click(function () {
-        $('#dialog').dialog();
+        $('#dialog').dialog({
+            buttons: [
+                {
+                    text: "Șterge",
+                    class: "btn btn-outline-danger",
+                    click: function () {
+                        var form = $('#post_form');
+                        var post_id = form.find('input[name="post_id"]').val();
+                        var url = form.find('input[name="post_delete_url"]').val();
+                        var csrf_token = form.find('input:first').val();
+
+                        var action = window.location.pathname.split('/').pop();
+
+                        var form_data = {
+                            'post_id': post_id,
+                            'action': action
+                        }
+
+                        console.log(post_id, action, csrf_token);
+
+                        $.ajax({
+                            method: 'POST',
+                            url: url,
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': csrf_token,
+                            },
+                            data: JSON.stringify(form_data),
+                            success: function (response) {
+                                console.log(response);
+
+                                var message = response.message;
+                                var redirect = response.redirect;
+
+                                alert(message);
+
+                                window.location.href = redirect;
+                            },
+                            error: function () {
+                                alert("Error on server side!");
+                            }
+                        });
+                    }
+                },
+                {
+                    text: "Renunță",
+                    class: "btn btn-outline-secondary",
+                    click: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            ]
+        });
         return false;
     });
 }

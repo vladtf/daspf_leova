@@ -4,6 +4,10 @@
 {% block content %}
     <form method="POST" id="post_form" enctype="multipart/form-data">
         {% csrf_token %}
+
+        <input type="hidden" name="post_id" value="{{ form.instance.id }}">
+        <input type="hidden" name="post_delete_url" value="{% url 'post_delete'%}">
+
         {% for hidden in form.hidden_fields %}
             {{ hidden }}
         {% endfor %}
@@ -52,8 +56,8 @@
 
     </form>
 
-    <div id="dialog" title="Dialog title" style="display: none">
-        <p>Dialog text</p>
+    <div id="dialog" title="Ștergere postare" style="display: none">
+        <p>Sunteți sigur că doriți să ștergeți postarea?</p>
     </div>
 
     <script>
