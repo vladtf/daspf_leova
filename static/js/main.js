@@ -217,6 +217,9 @@ function fitOverflowedImage() {
     });
 }
 
+function updateStatusSelectValue() {
+    $('#statusSelect').val($('#statusSelect').attr('value'));
+}
 
 $(function () {
 
@@ -233,5 +236,5 @@ $(function () {
     configCaptcha();
     setMapWidget();
     findActiveLinks();
-
+    updateStatusSelectValue();
 });

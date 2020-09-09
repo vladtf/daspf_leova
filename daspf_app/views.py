@@ -186,12 +186,12 @@ def contacts(request):
 def message_index(request):
     email = request.GET.get('email', '')
     text = request.GET.get('text', '')
+    status = request.GET.get('status', '')
 
-    message_list = Message.objects.order_by('-created_at')
+    message_list = Message.objects.order_by('-created_at').filter(status__icontains=status)
 
     if email or text:
-        message_list = Message.objects.filter(Q(email__icontains=email) & Q(text__icontains=text)) \
- \
+        message_list = message_list.filter(Q(email__icontains=email) & Q(text__icontains=text),)
             # if email:
     #     message_list = message_list.filter(email__icontains=email)
     # if text:

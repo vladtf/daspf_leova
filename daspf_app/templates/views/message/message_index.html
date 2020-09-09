@@ -3,13 +3,26 @@
 
 {% block content %}
     <form class="form-inline my-2 my-lg-0" action="{% url 'message_index' %}">
-        <input class="form-control search-field" type="search" aria-label="Search" placeholder="Email"
+
+        <input class="form-control search-field mr-2" type="search" aria-label="Search" placeholder="Email"
                name="email" value="{% if request.GET.email %}{{ request.GET.email }}{% endif %}">
-        <input class="form-control search-field ml-2" type="search" placeholder="Text" aria-label="Search"
+
+        <input class="form-control search-field mr-2" type="search" placeholder="Text" aria-label="Search"
                name="text" value="{% if request.GET.text %}{{ request.GET.text }}{% endif %}">
+
+        <select name="status" id="statusSelect" class="custom-select" onchange="this.form.submit()"
+                value="{% if request.GET.status %}{{ request.GET.status }}{% endif %}">
+            <option value="">Toate</option>
+            <option value="N">Nou</option>
+            <option value="V">Văzut</option>
+            <option value="R">Răspuns</option>
+            <option value="S">Soluționat</option>
+        </select>
+
         <button class="btn btn-success btn-md my-2 my-sm-0 ml-lg-2 search-button" type="submit">Caută</button>
     </form>
-    <div class="table-responsive">
+
+    <div class="table-responsive mt-2">
         <table class="table table-striped table-hover">
             <thead>
             <tr>

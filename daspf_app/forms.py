@@ -71,10 +71,14 @@ class MessageForm(forms.ModelForm):
 
 
 class MessageRespondForm(forms.ModelForm):
-    response = forms.CharField(label='Răspuns',required=False, max_length=500, widget=forms.Textarea(attrs={
+    response = forms.CharField(label='Răspuns', required=False, max_length=500, widget=forms.Textarea(attrs={
         "class": "form-control d-inline-block auto-grow",
         "style": "min-height: 220px;"
     }))
+
+    # status = forms.ChoiceField(label='Status', widget=forms.Select(attrs={
+    #     "class": "custom-select"
+    # }))
 
     class Meta:
         model = Message
@@ -82,3 +86,8 @@ class MessageRespondForm(forms.ModelForm):
             'response',
             'status'
         ]
+        widgets = {
+            'status': forms.Select(attrs={
+                "class": "custom-select"
+            })
+        }
