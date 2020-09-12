@@ -37,7 +37,7 @@ SECRET_KEY = 'l^(pd&fr0$_cbd(k+pg$_usc93z3wn2rx@%!1#j5v1)z#fr$g6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com', 'www.daspf.me']
 
 # Application definition
 
