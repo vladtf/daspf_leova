@@ -163,7 +163,7 @@ if os.getcwd() == '/':
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
     # Allow all host headers
-    ALLOWED_HOSTS = ['daspfleova.herokuapp.com']
+    ALLOWED_HOSTS = ['daspfleova.herokuapp.com', 'www.daspf.me']
     DEBUG = True
 
     # Static asset configuration
