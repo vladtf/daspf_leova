@@ -50,7 +50,7 @@ class MessageForm(forms.ModelForm):
         "class": "w-100"
     }))
 
-    phone = PhoneNumberField(region='MD', label='Telefon mobil', required=False)
+    phone = PhoneNumberField(region='MD', label='Telefon mobil', required=True)
 
     text = forms.CharField(label='Mesaj', max_length=500, widget=forms.Textarea(attrs={
         "class": "w-100 ",

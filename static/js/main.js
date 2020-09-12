@@ -221,6 +221,13 @@ function updateStatusSelectValue() {
     $('#statusSelect').val($('#statusSelect').attr('value'));
 }
 
+function editPhoneInput() {
+    $('#id_phone').attr({
+        'value': '+373',
+        'placeholder': 'ex. +373 791 22 333 sau 0263 933 22'
+    });
+}
+
 $(function () {
 
     fitOverflowedImage();
@@ -237,4 +244,5 @@ $(function () {
     setMapWidget();
     findActiveLinks();
     updateStatusSelectValue();
+    editPhoneInput();
 });

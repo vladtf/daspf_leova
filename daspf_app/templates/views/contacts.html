@@ -36,10 +36,13 @@
         </div>
     </div>
 
-
     <script>
-        document.getElementById('{{ form.phone.id_for_label }}').classList.add('w-100')
-        document.getElementById('{{form.email.id_for_label }}').classList.add('w-100')
+        document.getElementById('{{ form.phone.id_for_label }}').classList.add('w-100');
+        document.getElementById('{{form.email.id_for_label }}').classList.add('w-100');
+
+        {#document.getElementById("id_phone").addEventListener('change', function (e) {#}
+        {#    e.target.value = '+44' + e.target.value;#}
+        {#});#}
     </script>
 
 {% endblock content %}
