@@ -10,8 +10,7 @@
         <input class="form-control search-field mr-2" type="search" placeholder="Text" aria-label="Search"
                name="text" value="{% if request.GET.text %}{{ request.GET.text }}{% endif %}">
 
-        <select name="status" id="statusSelect" class="custom-select" onchange="this.form.submit()"
-                value="{% if request.GET.status %}{{ request.GET.status }}{% endif %}">
+        <select name="status" id="statusSelect" class="custom-select" onchange="this.form.submit()">
             <option value="">Toate</option>
             <option value="N">Nou</option>
             <option value="V">Văzut</option>
@@ -49,6 +48,10 @@
             </tbody>
         </table>
     </div>
+
+    <script>
+        $('#statusSelect').val("{{ request.GET.status }}");
+    </script>
 
     {% include 'layouts/paginator.html' with items=messages %}
 {% endblock %}

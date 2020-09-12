@@ -37,12 +37,12 @@
     </div>
 
     <script>
-        document.getElementById('{{ form.phone.id_for_label }}').classList.add('w-100');
-        document.getElementById('{{form.email.id_for_label }}').classList.add('w-100');
+        $('#{{ form.phone.id_for_label }}').addClass('w-100');
+        $('#{{form.email.id_for_label }}').addClass('w-100');
 
-        {#document.getElementById("id_phone").addEventListener('change', function (e) {#}
-        {#    e.target.value = '+44' + e.target.value;#}
-        {#});#}
+        $('#id_phone').attr({
+            'value': '+373',
+            'placeholder': 'ex. +373 791 22 333 sau 0263 933 22'
+        });
     </script>
-
 {% endblock content %}
