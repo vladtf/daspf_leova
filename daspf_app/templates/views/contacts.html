@@ -40,7 +40,7 @@
         $('#{{ form.phone.id_for_label }}').addClass('w-100');
         $('#{{form.email.id_for_label }}').addClass('w-100');
 
-        $('#id_phone').attr({
+        $("input[type='tel']").filter(function () { return $(this).val() == "";}).attr({
             'value': '+373',
             'placeholder': 'ex. +373 791 22 333 sau 0263 933 22'
         });

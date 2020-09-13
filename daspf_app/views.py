@@ -1,6 +1,7 @@
 import json
 
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.forms import modelformset_factory
@@ -171,7 +172,10 @@ def contacts(request):
     alert_flag = False
 
     if form.is_valid():
-        form.save()
+        message = form.save()
+
+        send_mail(subject=str(message.id) + '_DASPF', message=message.text,
+                  from_email='noreply@daspf.me', recipient_list=[message.email])
 
         alert_flag = True
         alert_message = 'Mesaj trimis cu succes.'
@@ -191,8 +195,8 @@ def message_index(request):
     message_list = Message.objects.order_by('-created_at').filter(status__icontains=status)
 
     if email or text:
-        message_list = message_list.filter(Q(email__icontains=email) & Q(text__icontains=text),)
-            # if email:
+        message_list = message_list.filter(Q(email__icontains=email) & Q(text__icontains=text), )
+        # if email:
     #     message_list = message_list.filter(email__icontains=email)
     # if text:
     #     message_list = message_list.filter(text__icontains=text)
