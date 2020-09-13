@@ -88,6 +88,14 @@ class Message(models.Model):
     def get_update_date(self):
         return self.updated_at.astimezone(tz=None).strftime("%d.%m.%Y %H:%M")
 
+    def default_response(self):
+        response = 'Bună ' + self.name + '!\n\n' \
+                                         'Vă mulțumim că ne-ați contactat.\n\n' \
+                                         'Acesta este un mesaj automat, veți fi contactat în cel mai apropiat timp.\n\n' \
+                                         'Cu respect,\n' \
+                                         'Direcția Asistență Socială și Protecția Familiei, Leova'
+        return response
+
 
 def short_date(date):
     time_delta = timezone.now() - date

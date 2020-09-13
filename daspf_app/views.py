@@ -174,7 +174,7 @@ def contacts(request):
     if form.is_valid():
         message = form.save()
 
-        send_mail(subject=str(message.id) + '_DASPF', message=message.text,
+        send_mail(subject='Confirmare mesaj - DASPF Leova', message=message.default_response(),
                   from_email='noreply@daspf.me', recipient_list=[message.email])
 
         alert_flag = True
