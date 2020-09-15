@@ -82,4 +82,16 @@
             <div class="sharethis-inline-share-buttons mt-2"></div>
         </div>
     </div>
+
+
+    <div class="fb-comments" data-numposts="5" data-width="100%"></div>
+
+    <script>
+        <!-- Define a unique url for post -->
+        $(function () {
+            var commentsUrl = 'daspf.leova.mda' + window.location.pathname;
+            console.log(commentsUrl);
+            $('.fb-comments').attr('data-href', commentsUrl);
+        });
+    </script>
 {% endblock content %}
