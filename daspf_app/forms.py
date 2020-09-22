@@ -16,6 +16,18 @@ class PostForm(forms.ModelForm):
             'image'
         ]
 
+        widgets = {
+            'title': forms.TextInput(attrs={
+                "class": "form-control"
+            }),
+            'category': forms.Select(attrs={
+                "class": "custom-select"
+            }),
+            'visible': forms.CheckboxInput(attrs={
+                "class": "custom-checkbox",
+                "style": "width: 1.2rem; height: 1.2rem;"
+            }),
+        }
     # def __init__(self, *args, **kwargs):
     #     super(PostForm, self).__init__(*args, **kwargs)
     #     self.fields['category'].queryset = Category.objects.filter(
@@ -47,7 +59,7 @@ class PageDataForm(forms.Form):
 
 class MessageForm(forms.ModelForm):
     name = forms.CharField(label='Nume', widget=forms.TextInput(attrs={
-        "class": "w-100"
+        "class": "w-100 form-control"
     }))
 
     phone = PhoneNumberField(region='MD', label='Telefon mobil', required=True)

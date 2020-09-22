@@ -46,5 +46,11 @@
             'value': '+373',
             'placeholder': 'ex. +373 791 22 333 sau 0263 933 22'
         });
+
+        $('input:not(:checkbox), textarea').filter(function () {
+            var name = $(this).attr('name');
+
+            return name ? name.search("captcha") : false;
+        }).addClass('form-control');
     </script>
 {% endblock content %}
